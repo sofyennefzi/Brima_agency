@@ -44,6 +44,29 @@ $hover-border: rgba(99, 102, 241, 0.3);
     font-weight: 400;
   }
 
+  &__brands {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    margin: 0 0 4rem;
+    padding: 2rem 0;
+  }
+
+  &__brand-logo {
+    height: 60px;
+    width: auto;
+    filter: brightness(1.2);
+    opacity: 0.8;
+    transition: all 0.3s ease;
+
+    &:hover {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+
   &__headline {
     font-size: clamp(3.5rem, 12vw, 10rem);
     font-weight: 900;
@@ -328,14 +351,30 @@ $hover-border: rgba(99, 102, 241, 0.3);
 // FAQ SECTION
 .faq-section {
   padding: 8rem 2rem;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
   border-top: 1px solid $border-color;
 }
 
-.faq {
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem;
   margin-top: 4rem;
 
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.faq-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.faq {
   &__item {
     border-bottom: 1px solid $border-color;
   }
@@ -345,11 +384,11 @@ $hover-border: rgba(99, 102, 241, 0.3);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 0;
+    padding: 1.5rem 0;
     background: none;
     border: none;
     color: $text-color;
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-weight: 600;
     text-align: left;
     cursor: pointer;
@@ -358,11 +397,24 @@ $hover-border: rgba(99, 102, 241, 0.3);
     &:hover {
       color: $text-muted;
     }
+
+    span:first-child {
+      flex: 1;
+      padding-right: 1rem;
+    }
   }
 
   &__icon {
+    font-size: 1.5rem;
+    font-weight: 300;
     flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: transform 0.3s ease;
+    color: $text-muted;
   }
 
   &__item--open &__icon {
@@ -370,14 +422,26 @@ $hover-border: rgba(99, 102, 241, 0.3);
   }
 
   &__answer {
-    padding: 0 0 2rem;
+    padding: 0 0 1.5rem;
+    animation: slideDown 0.3s ease;
 
     p {
-      font-size: 1.1rem;
+      font-size: 1rem;
       line-height: 1.7;
       color: $text-muted;
       margin: 0;
     }
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
