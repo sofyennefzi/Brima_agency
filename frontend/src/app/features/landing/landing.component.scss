@@ -1,0 +1,678 @@
+// ============================================
+// LANDING PAGE - notnice.io Complete Style
+// Dark gradients, smooth animations, 60fps
+// ============================================
+
+// ============================================
+// STICKY HEADER
+// ============================================
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(5, 5, 9, 0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background 0.3s ease;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1.25rem 2rem;
+  }
+
+  &__logo-link {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #fff, rgba(255, 255, 255, 0.8));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 2.5rem;
+  }
+
+  &__nav-link {
+    position: relative;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #6366f1, #d946ef);
+      transition: width 0.3s ease;
+    }
+
+    &:hover {
+      color: #fff;
+      &::after { width: 100%; }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+// ============================================
+// BUTTONS (Global)
+// ============================================
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.75rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+  cursor: pointer;
+  border: none;
+
+  &--dark {
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+  }
+
+  &--gradient {
+    background: linear-gradient(135deg, #6366f1, #d946ef, #f43f5e);
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 40px rgba(99, 102, 241, 0.6);
+    }
+  }
+
+  &--large {
+    padding: 1.25rem 3rem;
+    font-size: 1rem;
+  }
+}
+
+// ============================================
+// TESTIMONIAL
+// ============================================
+
+.testimonial {
+  padding: 8rem 2rem;
+  background: radial-gradient(circle at 100% 50%, rgba(99, 102, 241, 0.1), transparent 50%), #0a0a0f;
+
+  &__quote {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 500;
+    line-height: 1.5;
+    margin: 0 0 2rem;
+    color: #fff;
+  }
+
+  &__author {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    strong {
+      font-size: 1.1rem;
+      color: #fff;
+    }
+
+    span {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+  }
+}
+
+// ============================================
+// FEATURES TIMELINE
+// ============================================
+
+.features {
+  padding: 8rem 2rem;
+  background: #050509;
+
+  &__layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 6rem;
+    align-items: start;
+    margin-top: 4rem;
+  }
+
+  &__phone {
+    position: sticky;
+    top: 20vh;
+  }
+}
+
+.phone-demo {
+  width: 100%;
+  max-width: 400px;
+
+  &__screen {
+    aspect-ratio: 9 / 19.5;
+    border-radius: 40px;
+    background: #0a0a0f;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+  }
+}
+
+.phone__screen-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.timeline {
+  position: relative;
+
+  &__line {
+    position: absolute;
+    left: 24px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, rgba(99, 102, 241, 0.5), rgba(217, 70, 239, 0.5));
+  }
+
+  &__item {
+    position: relative;
+    padding-left: 5rem;
+    margin-bottom: 4rem;
+
+    &:last-child { margin-bottom: 0; }
+  }
+
+  &__marker {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6366f1, #d946ef);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+    transition: transform 0.3s ease;
+  }
+
+  &__item--active &__marker {
+    transform: scale(1.2);
+  }
+
+  &__number {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  &__title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin: 0 0 1rem;
+    color: #fff;
+  }
+
+  &__desc {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+  }
+}
+
+// ============================================
+// STATS SECTION
+// ============================================
+
+.stats {
+  padding: 8rem 2rem;
+  background: #0a0a0f;
+
+  &__layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  &__number {
+    font-size: clamp(4rem, 10vw, 8rem);
+    font-weight: 700;
+    background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+  }
+
+  &__label {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 1rem;
+  }
+
+  &__quote {
+    font-size: 1.5rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+  }
+}
+
+// ============================================
+// BRAND GALLERY
+// ============================================
+
+.gallery {
+  padding: 8rem 2rem;
+  background: #050509;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    margin-top: 4rem;
+  }
+
+  &__card {
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+
+    &:hover {
+      transform: translateY(-10px);
+
+      .gallery__image {
+        box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+      }
+    }
+  }
+
+  &__image {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    border-radius: 24px;
+    overflow: hidden;
+    background: #0a0a0f;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    transition: box-shadow 0.4s ease;
+    margin-bottom: 1.5rem;
+  }
+
+  &__brand-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  &__info {
+    text-align: center;
+
+    h3 {
+      font-size: 1.5rem;
+      margin: 0 0 0.5rem;
+      color: #fff;
+    }
+
+    p {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin: 0;
+    }
+  }
+}
+
+// ============================================
+// CTA SECTION
+// ============================================
+
+.cta {
+  padding: 10rem 2rem;
+  text-align: center;
+  background: radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.2), transparent 60%), #0a0a0f;
+
+  &__title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    margin: 0 0 1.5rem;
+    color: #fff;
+  }
+
+  &__subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0 0 3rem;
+  }
+}
+
+// ============================================
+// FAQ SECTION
+// ============================================
+
+.faq {
+  padding: 8rem 2rem;
+  background: #050509;
+
+  &__item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  &__question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #fff;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  &__answer {
+    padding: 0 0 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+// ============================================
+// FOOTER
+// ============================================
+
+.footer {
+  padding: 6rem 2rem 3rem;
+  background: #0a0a0f;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+
+  &__layout {
+    display: grid;
+    grid-template-columns: 1.5fr 2fr;
+    gap: 6rem;
+    margin-bottom: 4rem;
+  }
+
+  &__links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+
+  &__column {
+    h4 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin: 0 0 1.5rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    a {
+      display: block;
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      margin-bottom: 0.75rem;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+
+  &__bottom {
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+
+    p {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin: 0;
+    }
+  }
+}
+
+// ============================================
+// UTILITIES
+// ============================================
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+
+  &--wide { max-width: 1400px; }
+  &--narrow { max-width: 800px; }
+}
+
+.section-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 4rem;
+  color: #fff;
+}
+
+// ============================================
+// PINNED HERO (notnice-style sticky pin)
+// ============================================
+
+.pinned {
+  position: relative;
+  height: 380vh; // extra scroll height drives the animation
+  background: #050509;
+  overflow: clip;
+}
+
+.pinned__stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.pinned__phone {
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  transform: translate3d(-50%, 80px, 0) scale(0.85);
+  opacity: 0;
+  z-index: 50;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.pinned__text-bg {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pinned__headline {
+  font-size: clamp(3rem, 10vw, 10rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.pinned app-hero-section {
+  position: relative;
+  z-index: 10;
+  display: block;
+}
+
+// ============================================
+// PHONE MOCKUP (used in pinned section and features)
+// ============================================
+
+.phone-mockup {
+  width: 300px;
+  margin: 0 auto;
+  will-change: transform, opacity;
+  transition: box-shadow 0.3s ease;
+
+  &__screen {
+    aspect-ratio: 9 / 19.5;
+    border-radius: 40px;
+    background: #0a0a0f;
+    box-shadow:
+      0 40px 100px rgba(0, 0, 0, 0.8),
+      0 0 0 1px rgba(255, 255, 255, 0.1),
+      0 0 60px rgba(99, 102, 241, 0.3);
+    overflow: hidden;
+    border: 8px solid #1a1a1f;
+    position: relative;
+  }
+
+  &__gradient {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6, #d946ef);
+    opacity: 0.4;
+  }
+
+  &__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+}
+
+.phone__screen-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+// ============================================
+// FAQ ENHANCEMENTS
+// ============================================
+
+.faq__icon {
+  transition: transform 0.3s ease;
+}
+
+.faq__item--open .faq__icon {
+  transform: rotate(180deg);
+}
+
+.faq__list {
+  margin-top: 4rem;
+}
+
+.faq__answer p {
+  margin: 0;
+}
+
+// ============================================
+// FOOTER ENHANCEMENTS
+// ============================================
+
+.footer__logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.footer__tagline {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+// ============================================
+// RESPONSIVE
+// ============================================
+
+@media (max-width: 1024px) {
+  .features__layout {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  .stats__layout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .footer__layout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    &__nav {
+      display: none;
+    }
+  }
+
+  .footer__links {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .pinned {
+    height: 280vh; // Shorter on mobile
+  }
+
+  .phone-mockup {
+    width: 240px;
+  }
+}

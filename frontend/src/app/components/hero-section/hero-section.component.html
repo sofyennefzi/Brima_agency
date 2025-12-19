@@ -1,0 +1,100 @@
+<!-- ============================================ -->
+<!-- HEADER / NAVBAR (Sticky) -->
+<!-- ============================================ -->
+<header #header class="header">
+  <div class="header__container">
+    <!-- Left: Brand Logo -->
+    <div class="header__logo">
+      <a routerLink="/" class="header__logo-link">
+        <img src="assets/images/logo-white.png" alt="Brima Agency" class="header__logo-image">
+      </a>
+    </div>
+
+    <!-- Center: Navigation Links -->
+    <nav class="header__nav">
+      <a routerLink="/brands" class="header__nav-link">For Brands</a>
+      <a routerLink="/creators" class="header__nav-link">For Creators</a>
+      <a routerLink="/case-studies" class="header__nav-link">Case Studies</a>
+      <a routerLink="/career" class="header__nav-link">Career</a>
+    </nav>
+
+    <!-- Right: Auth Buttons -->
+    <div class="header__actions">
+      <a routerLink="/auth/sign-in" class="header__btn header__btn--dark">
+        LOGIN
+      </a>
+      <a routerLink="/start" class="header__btn header__btn--gradient">
+        SIGN UP
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================ -->
+<!-- HERO SECTION -->
+<!-- ============================================ -->
+<section class="hero">
+  <div class="hero__container">
+
+    <!-- Brand Trust Bar -->
+    <div class="hero__trust">
+      <p class="hero__trust-text">
+        Over 200 Brands work with us. Are you the next?
+      </p>
+      <div class="hero__logos">
+        <div
+          *ngFor="let logo of brandLogos"
+          class="hero__logo-item"
+        >
+          <img [src]="logo.image" [alt]="logo.name" class="hero__logo-image">
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Hero Headline -->
+    <div class="hero__headline-wrapper">
+      <h1 class="hero__headline">
+        <span class="hero__headline-word hero__headline-word--white">Create</span>
+        <span class="hero__headline-word hero__headline-word--gradient">hype</span>
+        <span class="hero__headline-word hero__headline-word--white">with creators.</span>
+      </h1>
+    </div>
+
+    <!-- 5 Vertical Video Cards -->
+    <div #videoCards class="hero__video-cards">
+      <div
+        *ngFor="let card of videoCardData"
+        class="hero__video-card"
+        [style.--rotation]="card.rotation + 'deg'"
+        [style.--z-index]="card.zIndex"
+      >
+        <div class="hero__video-card-inner">
+          <!-- Video/Image -->
+          <div class="hero__video-card-media">
+            <video
+              class="hero__video-card-video"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="auto"
+              [attr.data-case]="card.id"
+            >
+              <source [src]="card.videoUrl" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <!-- Gradient Overlay -->
+            <div class="hero__video-card-overlay"></div>
+          </div>
+
+          <!-- Card Label -->
+          <div class="hero__video-card-content">
+            <span class="hero__video-card-label">{{ card.title }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+

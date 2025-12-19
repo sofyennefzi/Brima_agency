@@ -1,0 +1,263 @@
+<!-- ============================================ -->
+<!-- PINNED HERO WRAPPER (notnice-style) -->
+<!-- The wrapper is tall to create scroll space; the stage is sticky (pinned). -->
+<!-- ============================================ -->
+<section class="pinned" #pinnedWrapper>
+  <div class="pinned__stage" #pinnedStage>
+    <!-- HERO SECTION COMPONENT (5 videos) -->
+    <app-hero-section></app-hero-section>
+
+    <!-- PHONE TARGET (appears at end of the animation) -->
+    <div class="pinned__phone" #phoneTarget>
+      <div class="phone-mockup">
+        <div class="phone-mockup__screen">
+          <div class="phone-mockup__gradient">
+            <video
+              #phoneVideo
+              class="phone-mockup__video"
+              muted
+              loop
+              playsinline
+              preload="auto"
+            >
+              <source src="assets/videos/video3.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Optional big background text like notnice -->
+    <div class="pinned__text-bg" aria-hidden="true">
+      <h2 class="pinned__headline">The everything platform for performing videos.</h2>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- REST OF PAGE (normal scrolling) -->
+<!-- ============================================ -->
+
+<!-- TESTIMONIAL BLOCK -->
+<section class="testimonial reveal-section">
+  <div class="container container--narrow">
+    <blockquote class="testimonial__quote">
+      "This platform is a must if you need creator made videos enhanced with ultimate AI-Tools."
+    </blockquote>
+    <footer class="testimonial__author">
+      <strong>Dhia Mazhoud</strong>
+      <span>Professional Content Creator</span>
+    </footer>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- FEATURES TIMELINE SECTION -->
+<!-- ============================================ -->
+<section class="features reveal-section">
+  <div class="container container--wide">
+
+    <h2 class="section-title">Features that bring your vision to life</h2>
+
+    <div class="features__layout">
+
+      <!-- Feature Phone (left side) -->
+      <div class="features__phone" #featurePhone>
+        <div class="phone-demo">
+          <div class="phone-demo__screen">
+            <div class="phone__screen-content">
+              <video
+                [src]="features[activeFeatureIndex].image"
+                autoplay
+                muted
+                loop
+                playsinline
+                class="phone__screen-video"
+              ></video>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline (right side) -->
+      <div class="features__timeline">
+        <div class="timeline">
+          <div class="timeline__line"></div>
+
+          <div
+            *ngFor="let feature of features; let i = index"
+            class="timeline__item"
+            [class.timeline__item--active]="i === activeFeatureIndex"
+          >
+            <div class="timeline__marker">
+              <span class="timeline__number">{{ feature.number }}</span>
+            </div>
+            <div class="timeline__content">
+              <h3 class="timeline__title">{{ feature.title }}</h3>
+              <p class="timeline__desc">{{ feature.description }}</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- STATS + QUOTE SECTION -->
+<!-- ============================================ -->
+<section #statsSection class="stats reveal-section">
+  <div class="container">
+
+    <div class="stats__layout">
+
+      <div class="stats__left">
+        <div class="stats__number">0</div>
+        <div class="stats__label">active creators... and counting!</div>
+      </div>
+
+      <div class="stats__right">
+        <p class="stats__quote">
+          Join thousands of brands creating viral content with our network of professional creators.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- BRAND GALLERY -->
+<!-- ============================================ -->
+<section class="gallery reveal-section">
+  <div class="container">
+
+    <h2 class="section-title">120+ Brands already use our platform!</h2>
+
+    <div class="gallery__grid">
+      <div class="gallery__card" *ngFor="let brand of galleryBrands">
+        <div class="gallery__image">
+          <img [src]="brand.image" [alt]="brand.name" class="gallery__brand-image">
+        </div>
+        <div class="gallery__info">
+          <h3>{{ brand.name }}</h3>
+          <p>{{ brand.tagline }}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- MAIN CTA SECTION -->
+<!-- ============================================ -->
+<section class="cta reveal-section">
+  <div class="container container--narrow">
+
+    <h2 class="cta__title">Become a Brand</h2>
+    <p class="cta__subtitle">
+      Start creating world-class content with our creator network
+    </p>
+
+    <a routerLink="/start" class="btn btn--gradient btn--large">
+      Become a Brand
+    </a>
+
+    <div class="cta__image">
+      <div class="cta__phone">
+        <div class="cta__phone-gradient"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- FAQ SECTION -->
+<!-- ============================================ -->
+<section class="faq reveal-section">
+  <div class="container container--narrow">
+
+    <h2 class="section-title">Frequently asked questions</h2>
+
+    <div class="faq__list">
+      <div
+        *ngFor="let item of faqs; let i = index"
+        class="faq__item"
+        [class.faq__item--open]="item.open"
+      >
+        <button
+          class="faq__question"
+          (click)="toggleFaq(i)"
+          type="button"
+        >
+          <span>{{ item.question }}</span>
+          <svg
+            class="faq__icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </button>
+        <div class="faq__answer" *ngIf="item.open">
+          <p>{{ item.answer }}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- FOOTER -->
+<!-- ============================================ -->
+<footer class="footer">
+  <div class="container">
+
+    <div class="footer__layout">
+
+      <div class="footer__brand">
+        <div class="footer__logo">MY BRAND</div>
+        <p class="footer__tagline">
+          The everything platform for performing videos
+        </p>
+      </div>
+
+      <div class="footer__links">
+        <div class="footer__column">
+          <h4>Platform</h4>
+          <a routerLink="/brands">For Brands</a>
+          <a routerLink="/creators">For Creators</a>
+          <a routerLink="/case-studies">Case Studies</a>
+        </div>
+
+        <div class="footer__column">
+          <h4>Company</h4>
+          <a routerLink="/about">About</a>
+          <a routerLink="/career">Career</a>
+          <a routerLink="/contact">Contact</a>
+        </div>
+
+        <div class="footer__column">
+          <h4>Legal</h4>
+          <a routerLink="/privacy">Privacy</a>
+          <a routerLink="/terms">Terms</a>
+          <a routerLink="/imprint">Imprint</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <p>&copy; 2025 MY BRAND. All rights reserved.</p>
+    </div>
+
+  </div>
+</footer>

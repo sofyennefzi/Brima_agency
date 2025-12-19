@@ -1,0 +1,38 @@
+<main class="auth">
+  <section class="auth__shell" aria-labelledby="sign-in-title">
+    <header class="auth__header">
+      <p class="auth__eyebrow">Welcome back</p>
+      <h1 id="sign-in-title" class="auth__title">Sign in</h1>
+    </header>
+
+    <form class="auth__form" [formGroup]="form" (ngSubmit)="submit()" autocomplete="off" novalidate>
+      <label class="field">
+        <span class="field__label">Email</span>
+        <input class="field__input" type="email" formControlName="email" />
+      </label>
+
+      <label class="field field--password">
+        <span class="field__label">Password</span>
+        <input
+          class="field__input"
+          [type]="showPassword ? 'text' : 'password'"
+          formControlName="password"
+        />
+        <button type="button" class="field__toggle" (click)="togglePassword()" aria-label="Toggle password visibility">
+          {{ showPassword ? 'Hide' : 'Show' }}
+        </button>
+      </label>
+
+      <button class="auth__submit" type="submit">Sign in</button>
+
+      <button class="auth__link" type="button">Forgot password?</button>
+
+      <p class="auth__alt">Don't have an account?
+        <a routerLink="/auth/creator-sign-up">Creator</a>
+        /
+        <a routerLink="/auth/brand-sign-up">Brand</a>
+      </p>
+    </form>
+  </section>
+</main>
+

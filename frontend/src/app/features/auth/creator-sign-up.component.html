@@ -1,0 +1,49 @@
+<main class="auth">
+  <section class="auth__shell" aria-labelledby="creator-sign-up-title">
+    <header class="auth__header">
+      <p class="auth__eyebrow">Creator access</p>
+      <h1 id="creator-sign-up-title" class="auth__title">Join the Brima creator roster</h1>
+    </header>
+
+    <form class="auth__form" [formGroup]="form" (ngSubmit)="submit()" autocomplete="off" novalidate>
+      <div class="auth__row">
+        <label class="field">
+          <span class="field__label">First Name</span>
+          <input class="field__input" type="text" formControlName="first_name" />
+        </label>
+
+        <label class="field">
+          <span class="field__label">Last Name</span>
+          <input class="field__input" type="text" formControlName="last_name" />
+        </label>
+      </div>
+
+      <div class="auth__row">
+        <label class="field">
+          <span class="field__label">Phone</span>
+          <input class="field__input" type="tel" formControlName="phone" />
+        </label>
+
+        <label class="field">
+          <span class="field__label">Email</span>
+          <input class="field__input" type="email" formControlName="email" />
+        </label>
+      </div>
+
+      <label class="field field--password">
+        <span class="field__label">Password</span>
+        <input
+          class="field__input"
+          [type]="showPassword ? 'text' : 'password'"
+          formControlName="password"
+        />
+        <button type="button" class="field__toggle" (click)="togglePassword()" aria-label="Toggle password visibility">
+          {{ showPassword ? 'Hide' : 'Show' }}
+        </button>
+      </label>
+
+      <button class="auth__submit" type="submit">Create creator profile</button>
+    </form>
+  </section>
+</main>
+

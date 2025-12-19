@@ -1,0 +1,119 @@
+.role {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top left, #4c1d95 0, #020617 50%, #000 100%);
+  color: #e5e7eb;
+
+  &__shell {
+    width: min(920px, 100% - 3rem);
+    padding: 2.75rem 2.25rem 3rem;
+    border-radius: 32px;
+    background: radial-gradient(circle at top left, rgba(129, 140, 248, 0.24), transparent 55%),
+      linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.9));
+    border: 1px solid rgba(148, 163, 184, 0.24);
+    box-shadow: 0 30px 120px rgba(0, 0, 0, 0.9);
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 2.25rem;
+  }
+
+  &__logo {
+    font-size: 1.4rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(209, 213, 219, 0.95);
+  }
+
+  &__tagline {
+    color: rgba(148, 163, 184, 0.9);
+    font-size: 0.98rem;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.75rem;
+  }
+
+  &__tile {
+    position: relative;
+    isolation: isolate;
+    border-radius: 24px;
+    padding: 1px;
+    background: linear-gradient(145deg, rgba(168, 85, 247, 0.8), rgba(59, 130, 246, 0.3));
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: transform 420ms cubic-bezier(0.22, 0.61, 0.36, 1),
+      box-shadow 420ms cubic-bezier(0.22, 0.61, 0.36, 1),
+      background 420ms cubic-bezier(0.22, 0.61, 0.36, 1);
+
+    &:focus-visible {
+      outline: 2px solid #a855f7;
+      outline-offset: 4px;
+    }
+
+    &:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 30px 90px rgba(59, 130, 246, 0.5);
+    }
+  }
+
+  &__tile-inner {
+    position: relative;
+    z-index: 1;
+    border-radius: inherit;
+    padding: 1.8rem 1.6rem 1.9rem;
+    background: radial-gradient(circle at top left, rgba(248, 250, 252, 0.06), transparent 55%),
+      rgba(15, 23, 42, 0.96);
+  }
+
+  &__tile h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.65rem;
+    color: #e5e7eb;
+  }
+
+  &__tile p {
+    font-size: 0.98rem;
+    color: rgba(148, 163, 184, 0.96);
+  }
+
+  &__halo {
+    position: absolute;
+    inset: -25%;
+    border-radius: inherit;
+    filter: blur(36px);
+    opacity: 0;
+    transition: opacity 420ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  &__tile--brand:hover .role__halo--brand {
+    opacity: 1;
+    background: radial-gradient(circle at top left, rgba(94, 234, 212, 0.75), transparent 60%);
+  }
+
+  &__tile--creator:hover .role__halo--creator {
+    opacity: 1;
+    background: radial-gradient(circle at top left, rgba(251, 113, 133, 0.9), transparent 65%);
+  }
+}
+
+@media (max-width: 768px) {
+  .role {
+    &__shell {
+      padding-inline: 1.5rem;
+    }
+
+    &__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+

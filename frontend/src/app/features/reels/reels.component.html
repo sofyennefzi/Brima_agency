@@ -1,0 +1,30 @@
+<div class="reels-container">
+  <div class="reel-item" *ngFor="let video of videos; let i = index">
+    <video
+      #videoElement
+      class="reel-video"
+      [src]="video.src"
+      muted
+      loop
+      playsinline
+      preload="auto"
+      (loadedmetadata)="onVideoLoaded(videoElement)"
+      [attr.data-video-id]="video.id"
+    ></video>
+
+    <!-- Optional overlay with video info -->
+    <div class="reel-overlay">
+      <div class="reel-info">
+        <h2 class="reel-title">{{ video.title }}</h2>
+        <p class="reel-number">{{ i + 1 }} / {{ videos.length }}</p>
+      </div>
+
+      <!-- Scroll indicator (only on first video) -->
+      <div class="scroll-indicator" *ngIf="i === 0">
+        <div class="scroll-arrow">↓</div>
+        <p class="scroll-text">Scroll to see more</p>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,255 @@
+.career { padding-top: 80px; }
+
+.hero {
+  padding: 6rem 2rem;
+  background: radial-gradient(circle at 50% 20%, rgba(99, 102, 241, 0.15), transparent 60%), #050509;
+
+  &__container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &__headline {
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 3rem;
+  }
+
+  &__quote {
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    font-style: italic;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 1.5rem;
+  }
+
+  &__author {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+  }
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  text-align: center;
+  color: #fff;
+  margin: 0 0 3rem;
+}
+
+.jobs {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.job-card {
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+  }
+
+  &__title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 1rem;
+  }
+
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.6);
+
+    span {
+      padding: 0.5rem 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 999px;
+    }
+  }
+
+  &__section {
+    margin-bottom: 2.5rem;
+
+    h4 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #fff;
+      margin: 0 0 1rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.7);
+
+      &::before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        color: #6366f1;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+.btn {
+  display: inline-flex;
+  padding: 1rem 2.5rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  &--primary {
+    background: linear-gradient(135deg, #6366f1, #d946ef, #f43f5e);
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 40px rgba(99, 102, 241, 0.6);
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .job-card {
+    padding: 2rem 1.5rem;
+
+    &__meta {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+}
+.cases { padding-top: 80px; }
+
+.hero {
+  padding: 6rem 2rem 4rem;
+  background: radial-gradient(circle at 50% 20%, rgba(99, 102, 241, 0.15), transparent 60%), #050509;
+
+  &__container { max-width: 900px; margin: 0 auto; text-align: center; }
+
+  &__headline {
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 1.5rem;
+  }
+
+  &__subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+  }
+}
+
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2.5rem;
+}
+
+.case-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-8px);
+    border-color: rgba(99, 102, 241, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  &__image {
+    aspect-ratio: 16 / 9;
+    background: linear-gradient(135deg, #1a1a1f, #2a2a2f);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__placeholder {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.3);
+  }
+
+  &__content { padding: 2rem; }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 0 0 0.5rem;
+  }
+
+  &__brand {
+    font-size: 0.95rem;
+    color: #6366f1;
+    margin: 0 0 1rem;
+  }
+
+  &__description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0 0 1.5rem;
+  }
+
+  &__results {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.6);
+
+    strong { color: #fff; }
+  }
+}
+
+.swipe-hint {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.95rem;
+  margin-top: 3rem;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .cases-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
