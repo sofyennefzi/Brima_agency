@@ -9,10 +9,10 @@ export const siteConfig = {
 
   // External App URLs
   externalUrls: {
-    login: 'https://app.brimaagency.com/login',
-    signUp: 'https://app.brimaagency.com/signup',
-    brandSignUp: 'https://app.brimaagency.com/brand-signup',
-    creatorSignUp: 'https://app.brimaagency.com/creator-signup',
+    login: '/auth/sign-in',
+    signUp: '/auth/role-select',
+    brandSignUp: '/auth/brand-sign-up',
+    creatorSignUp: '/auth/creator-sign-up',
     jobApplicationForm: 'https://forms.gle/example'
   },
 

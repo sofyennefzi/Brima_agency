@@ -3,116 +3,178 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at top left, #4c1d95 0, #020617 50%, #000 100%);
-  color: #e5e7eb;
+  background: linear-gradient(135deg, #1a0b2e 0%, #16213e 100%);
+  padding: 2rem;
 
-  &__shell {
-    width: min(920px, 100% - 3rem);
-    padding: 2.75rem 2.25rem 3rem;
-    border-radius: 32px;
-    background: radial-gradient(circle at top left, rgba(129, 140, 248, 0.24), transparent 55%),
-      linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.9));
-    border: 1px solid rgba(148, 163, 184, 0.24);
-    box-shadow: 0 30px 120px rgba(0, 0, 0, 0.9);
+  &__container {
+    max-width: 1000px;
+    width: 100%;
   }
 
   &__header {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-bottom: 2.25rem;
+    text-align: center;
+    margin-bottom: 4rem;
   }
 
   &__logo {
-    font-size: 1.4rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(209, 213, 219, 0.95);
+    height: 48px;
+    margin-bottom: 2rem;
   }
 
-  &__tagline {
-    color: rgba(148, 163, 184, 0.9);
-    font-size: 0.98rem;
+  &__title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
   }
 
-  &__grid {
+  &__subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 400;
+  }
+
+  &__cards {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.75rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
   }
 
-  &__tile {
+  &__card {
     position: relative;
-    isolation: isolate;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
     border-radius: 24px;
-    padding: 1px;
-    background: linear-gradient(145deg, rgba(168, 85, 247, 0.8), rgba(59, 130, 246, 0.3));
-    border: none;
+    padding: 3rem 2rem;
+    text-align: center;
     cursor: pointer;
-    text-align: left;
-    transition: transform 420ms cubic-bezier(0.22, 0.61, 0.36, 1),
-      box-shadow 420ms cubic-bezier(0.22, 0.61, 0.36, 1),
-      background 420ms cubic-bezier(0.22, 0.61, 0.36, 1);
+    transition: all 0.3s ease;
+    overflow: hidden;
 
-    &:focus-visible {
-      outline: 2px solid #a855f7;
-      outline-offset: 4px;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(132, 17, 113, 0.2) 0%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
 
     &:hover {
-      transform: translateY(-6px) scale(1.01);
-      box-shadow: 0 30px 90px rgba(59, 130, 246, 0.5);
+      transform: translateY(-8px);
+      border-color: #841171;
+      box-shadow: 0 20px 60px rgba(132, 17, 113, 0.4);
+
+      &::before {
+        opacity: 1;
+      }
+
+      .role__card-arrow {
+        transform: translateX(8px);
+      }
+    }
+
+    &--brand:hover {
+      border-color: #841171;
+      box-shadow: 0 20px 60px rgba(132, 17, 113, 0.4);
+    }
+
+    &--creator:hover {
+      border-color: #c026d3;
+      box-shadow: 0 20px 60px rgba(192, 38, 211, 0.4);
     }
   }
 
-  &__tile-inner {
-    position: relative;
-    z-index: 1;
-    border-radius: inherit;
-    padding: 1.8rem 1.6rem 1.9rem;
-    background: radial-gradient(circle at top left, rgba(248, 250, 252, 0.06), transparent 55%),
-      rgba(15, 23, 42, 0.96);
+  &__card-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(132, 17, 113, 0.2);
+    border-radius: 50%;
+    color: #841171;
+
+    svg {
+      width: 40px;
+      height: 40px;
+    }
   }
 
-  &__tile h2 {
-    font-size: 1.25rem;
-    margin-bottom: 0.65rem;
-    color: #e5e7eb;
+  &__card--creator &__card-icon {
+    background: rgba(192, 38, 211, 0.2);
+    color: #c026d3;
   }
 
-  &__tile p {
-    font-size: 0.98rem;
-    color: rgba(148, 163, 184, 0.96);
+  &__card-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1rem;
   }
 
-  &__halo {
-    position: absolute;
-    inset: -25%;
-    border-radius: inherit;
-    filter: blur(36px);
-    opacity: 0;
-    transition: opacity 420ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  &__card-description {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
   }
 
-  &__tile--brand:hover .role__halo--brand {
-    opacity: 1;
-    background: radial-gradient(circle at top left, rgba(94, 234, 212, 0.75), transparent 60%);
+  &__card-arrow {
+    display: inline-block;
+    font-size: 1.5rem;
+    color: #841171;
+    transition: transform 0.3s ease;
   }
 
-  &__tile--creator:hover .role__halo--creator {
-    opacity: 1;
-    background: radial-gradient(circle at top left, rgba(251, 113, 133, 0.9), transparent 65%);
+  &__card--creator &__card-arrow {
+    color: #c026d3;
+  }
+
+  &__footer {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1rem;
+  }
+
+  &__link {
+    color: #841171;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #a020f0;
+      text-decoration: underline;
+    }
   }
 }
 
 @media (max-width: 768px) {
   .role {
-    &__shell {
-      padding-inline: 1.5rem;
+    padding: 1rem;
+
+    &__title {
+      font-size: 2rem;
     }
 
-    &__grid {
+    &__subtitle {
+      font-size: 1rem;
+    }
+
+    &__cards {
       grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    &__card {
+      padding: 2rem 1.5rem;
     }
   }
 }

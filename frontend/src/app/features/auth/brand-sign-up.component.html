@@ -1,62 +1,71 @@
 <main class="auth">
-  <section class="auth__shell" aria-labelledby="brand-sign-up-title">
+  <section class="auth__shell">
     <header class="auth__header">
-      <p class="auth__eyebrow">Brand access</p>
-      <h1 id="brand-sign-up-title" class="auth__title">Apply as a brand partner</h1>
+      <p class="auth__eyebrow">Brand Portal</p>
+      <h1 class="auth__title">{{ step === 'form' ? 'Create Your Brand Account' : 'Schedule Your Onboarding Meeting' }}</h1>
+      <p class="auth__subtitle" *ngIf="step === 'form'">Join 200+ brands creating amazing content</p>
+      <p class="auth__subtitle" *ngIf="step === 'calendar'">Pick a date and time that works for you</p>
     </header>
 
-    <section *ngIf="step === 'form'; else calendarStep">
+    <!-- Step 1: Sign Up Form -->
+    <section *ngIf="step === 'form'">
       <form class="auth__form" [formGroup]="form" (ngSubmit)="submit()" autocomplete="off" novalidate>
         <div class="auth__row">
           <label class="field">
-            <span class="field__label">First Name</span>
-            <input class="field__input" type="text" formControlName="first_name" />
+            <span class="field__label">First Name *</span>
+            <input class="field__input" type="text" formControlName="first_name" placeholder="Ahmed" />
           </label>
 
           <label class="field">
-            <span class="field__label">Last Name</span>
-            <input class="field__input" type="text" formControlName="last_name" />
+            <span class="field__label">Last Name *</span>
+            <input class="field__input" type="text" formControlName="last_name" placeholder="Ayari" />
           </label>
         </div>
 
+        <label class="field">
+          <span class="field__label">Company Name *</span>
+          <input class="field__input" type="text" formControlName="company_name" placeholder="Your Company" />
+        </label>
+
         <div class="auth__row">
           <label class="field">
-            <span class="field__label">Company Name</span>
-            <input class="field__input" type="text" formControlName="company_name" />
+            <span class="field__label">Email *</span>
+            <input class="field__input" type="email" formControlName="email" placeholder="you@company.com" />
           </label>
 
           <label class="field">
             <span class="field__label">Phone</span>
-            <input class="field__input" type="tel" formControlName="phone" />
+            <input class="field__input" type="tel" formControlName="phone" placeholder="+216 12 345 678" />
           </label>
         </div>
 
-        <div class="auth__row">
-          <label class="field">
-            <span class="field__label">Email</span>
-            <input class="field__input" type="email" formControlName="email" />
-          </label>
+        <label class="field field--password">
+          <span class="field__label">Password *</span>
+          <input
+            class="field__input"
+            [type]="showPassword ? 'text' : 'password'"
+            formControlName="password"
+            placeholder="Min. 8 characters"
+          />
+          <button type="button" class="field__toggle" (click)="togglePassword()">
+            {{ showPassword ? 'Hide' : 'Show' }}
+          </button>
+        </label>
 
-          <label class="field field--password">
-            <span class="field__label">Password</span>
-            <input
-              class="field__input"
-              [type]="showPassword ? 'text' : 'password'"
-              formControlName="password"
-            />
-            <button type="button" class="field__toggle" (click)="togglePassword()" aria-label="Toggle password visibility">
-              {{ showPassword ? 'Hide' : 'Show' }}
-            </button>
-          </label>
-        </div>
-
-        <button class="auth__submit" type="submit">Create brand account</button>
+        <button class="auth__submit" type="submit" [disabled]="form.invalid">
+          Create Account & Continue
+        </button>
       </form>
+
+      <p class="auth__footer">
+        Already have an account? <a routerLink="/auth/sign-in" class="auth__link">Sign In</a>
+      </p>
     </section>
 
-    <ng-template #calendarStep>
+    <!-- Step 2: Calendar Selection -->
+    <section *ngIf="step === 'calendar'">
       <app-brand-interview-calendar (dateSelected)="onInterviewChosen($event)"></app-brand-interview-calendar>
-    </ng-template>
+    </section>
   </section>
 </main>
 

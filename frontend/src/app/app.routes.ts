@@ -51,6 +51,7 @@ export const routes: Routes = [
   {
     path: 'auth',
     children: [
+      { path: 'role-select', loadComponent: () => import('./features/role-select/role-select.component').then(m => m.RoleSelectComponent) },
       { path: 'sign-in', loadComponent: () => import('./features/auth/sign-in.component').then(m => m.SignInComponent) },
       { path: 'creator-sign-up', loadComponent: () => import('./features/auth/creator-sign-up.component').then(m => m.CreatorSignUpComponent) },
       { path: 'brand-sign-up', loadComponent: () => import('./features/auth/brand-sign-up.component').then(m => m.BrandSignUpComponent) },

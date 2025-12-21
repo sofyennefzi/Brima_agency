@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { NavbarComponent } from '../shared/navbar.component';
 import { FooterComponent } from '../shared/footer.component';
 import { SectionComponent } from '../shared/section.component';
@@ -8,7 +9,7 @@ import { siteConfig, brandLogos, faqsBrands } from '../../config/site';
 @Component({
   selector: 'app-for-brands',
   standalone: true,
-  imports: [CommonModule, NavbarComponent, FooterComponent, SectionComponent],
+  imports: [CommonModule, RouterLink, NavbarComponent, FooterComponent, SectionComponent],
   template: `
     <app-navbar></app-navbar>
 
@@ -24,7 +25,7 @@ import { siteConfig, brandLogos, faqsBrands } from '../../config/site';
             Access a network of professional creators and AI-powered tools to produce high-performing video content at scale.
           </p>
           <div class="hero__cta-buttons">
-            <a [href]="siteConfig.externalUrls.brandSignUp" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+            <a [routerLink]="siteConfig.externalUrls.brandSignUp" class="btn btn--primary">
               Become a Brand
             </a>
             <a href="#studios" class="btn btn--secondary">
@@ -86,7 +87,7 @@ import { siteConfig, brandLogos, faqsBrands } from '../../config/site';
         <div class="final-cta">
           <h2 class="final-cta__title">Join the {{ siteConfig.name }} way</h2>
           <p class="final-cta__subtitle">Start creating content that drives results</p>
-          <a [href]="siteConfig.externalUrls.brandSignUp" class="btn btn--primary btn--large" target="_blank" rel="noopener noreferrer">
+          <a [routerLink]="siteConfig.externalUrls.brandSignUp" class="btn btn--primary btn--large">
             Become a Brand
           </a>
         </div>

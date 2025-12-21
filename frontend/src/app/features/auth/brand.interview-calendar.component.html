@@ -1,0 +1,51 @@
+<div class="calendar">
+  <div class="calendar__section">
+    <label class="calendar__label">Select a Date</label>
+    <input
+      type="date"
+      class="calendar__date-input"
+      [value]="selectedDate || ''"
+      (change)="onDateChange($event)"
+      [min]="minDate"
+    />
+  </div>
+
+  <div class="calendar__section" *ngIf="selectedDate">
+    <label class="calendar__label">Choose a Time</label>
+    <div class="calendar__times">
+      <button
+        *ngFor="let time of times"
+        type="button"
+        class="calendar__time-btn"
+        [class.calendar__time-btn--selected]="selectedTime === time"
+        (click)="chooseTime(time)"
+      >
+        {{ time }}
+      </button>
+    </div>
+  </div>
+
+  <button
+    class="calendar__confirm"
+    type="button"
+    [disabled]="!selectedDate || !selectedTime"
+    (click)="confirmSelection()"
+    *ngIf="!confirmed"
+  >
+    Confirm Meeting
+  </button>
+
+  <div class="calendar__success" *ngIf="confirmed">
+    <div class="calendar__success-icon">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+    <h3 class="calendar__success-title">Meeting Scheduled!</h3>
+    <p class="calendar__success-message">
+      Your onboarding meeting is confirmed for {{ selectedDate }} at {{ selectedTime }}.
+      We'll send you a calendar invite shortly.
+    </p>
+  </div>
+</div>
+

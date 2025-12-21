@@ -44,18 +44,14 @@ import { siteConfig } from '../../config/site';
         <!-- Auth Buttons -->
         <div class="navbar__actions">
           <a
-            [href]="siteConfig.externalUrls.login"
+            [routerLink]="siteConfig.externalUrls.login"
             class="navbar__btn navbar__btn--ghost"
-            target="_blank"
-            rel="noopener noreferrer"
           >
             LOGIN
           </a>
           <a
-            [href]="siteConfig.externalUrls.signUp"
+            [routerLink]="siteConfig.externalUrls.signUp"
             class="navbar__btn navbar__btn--primary"
-            target="_blank"
-            rel="noopener noreferrer"
           >
             SIGN UP
           </a>

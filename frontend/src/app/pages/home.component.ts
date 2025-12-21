@@ -1,5 +1,6 @@
 import { Component, AfterViewInit, ElementRef, ViewChildren, QueryList } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { NavbarComponent } from '../shared/navbar.component';
 import { FooterComponent } from '../shared/footer.component';
 import { siteConfig } from '../../config/site';
@@ -7,7 +8,7 @@ import { siteConfig } from '../../config/site';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, NavbarComponent, FooterComponent],
+  imports: [CommonModule, RouterLink, NavbarComponent, FooterComponent],
   template: `
     <app-navbar></app-navbar>
 
@@ -27,7 +28,7 @@ import { siteConfig } from '../../config/site';
             <span class="hero__line">with creators.</span>
           </h1>
           <p class="hero__description">The everything platform for videos</p>
-          <a [href]="siteConfig.externalUrls.brandSignUp" class="hero__cta" target="_blank" rel="noopener noreferrer">
+          <a [routerLink]="siteConfig.externalUrls.brandSignUp" class="hero__cta">
             Become a Brand
           </a>
         </div>
@@ -110,7 +111,7 @@ import { siteConfig } from '../../config/site';
       <!-- Brand Trust CTA -->
       <section class="brand-trust-section">
         <h2 class="brand-trust__title">120+ Brands already use our platform!</h2>
-        <a [href]="siteConfig.externalUrls.brandSignUp" class="brand-trust__button" target="_blank" rel="noopener noreferrer">
+        <a [routerLink]="siteConfig.externalUrls.brandSignUp" class="brand-trust__button">
           Become a Brand
         </a>
       </section>
@@ -151,10 +152,10 @@ import { siteConfig } from '../../config/site';
       <section class="final-cta-section">
         <h2 class="final-cta__title">Join the Brima Agency way</h2>
         <div class="final-cta__buttons">
-          <a [href]="siteConfig.externalUrls.brandSignUp" class="final-cta__button final-cta__button--primary" target="_blank" rel="noopener noreferrer">
+          <a [routerLink]="siteConfig.externalUrls.brandSignUp" class="final-cta__button final-cta__button--primary">
             Become a Brand
           </a>
-          <a [href]="siteConfig.externalUrls.creatorSignUp" class="final-cta__button final-cta__button--secondary" target="_blank" rel="noopener noreferrer">
+          <a [routerLink]="siteConfig.externalUrls.creatorSignUp" class="final-cta__button final-cta__button--secondary">
             Become a Creator
           </a>
         </div>

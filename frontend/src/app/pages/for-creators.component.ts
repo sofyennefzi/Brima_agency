@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { NavbarComponent } from '../shared/navbar.component';
 import { FooterComponent } from '../shared/footer.component';
 import { SectionComponent } from '../shared/section.component';
@@ -8,7 +9,7 @@ import { siteConfig, faqsCreators } from '../../config/site';
 @Component({
   selector: 'app-for-creators',
   standalone: true,
-  imports: [CommonModule, NavbarComponent, FooterComponent, SectionComponent],
+  imports: [CommonModule, RouterLink, NavbarComponent, FooterComponent, SectionComponent],
   template: `
     <app-navbar></app-navbar>
 
@@ -22,7 +23,7 @@ import { siteConfig, faqsCreators } from '../../config/site';
           <p class="hero__subtitle">
             Join our network of professional creators and get paid to create engaging video content for top brands.
           </p>
-          <a [href]="siteConfig.externalUrls.creatorSignUp" class="btn btn--primary btn--large" target="_blank" rel="noopener noreferrer">
+          <a [routerLink]="siteConfig.externalUrls.creatorSignUp" class="btn btn--primary btn--large">
             Become a Creator
           </a>
         </div>

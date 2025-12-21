@@ -1,27 +1,41 @@
 <main class="role">
-  <section class="role__shell">
+  <div class="role__container">
     <header class="role__header">
-      <h1 class="role__logo">Brima Studio</h1>
-      <p class="role__tagline">Choose how you want to enter the experience.</p>
+      <img src="assets/images/logo-white.png" alt="Brima Agency" class="role__logo" />
+      <h1 class="role__title">Join Brima Agency</h1>
+      <p class="role__subtitle">Select your account type to get started</p>
     </header>
 
-    <section class="role__grid" aria-label="Choose your portal">
-      <button class="role__tile role__tile--brand" (click)="continueAsBrand()">
-        <div class="role__halo role__halo--brand"></div>
-        <div class="role__tile-inner">
-          <h2>Continue as Brand</h2>
-          <p>Book motion-led creator interviews and launch premium campaigns.</p>
+    <div class="role__cards">
+      <button class="role__card role__card--brand" (click)="continueAsBrand()">
+        <div class="role__card-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
         </div>
+        <h2 class="role__card-title">I'm a Brand</h2>
+        <p class="role__card-description">Find and work with talented creators to produce amazing content for your brand</p>
+        <span class="role__card-arrow">→</span>
       </button>
 
-      <button class="role__tile role__tile--creator" (click)="continueAsCreator()">
-        <div class="role__halo role__halo--creator"></div>
-        <div class="role__tile-inner">
-          <h2>Continue as Creator</h2>
-          <p>Join curated rosters and collaborate with high-intent brands.</p>
+      <button class="role__card role__card--creator" (click)="continueAsCreator()">
+        <div class="role__card-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+            <circle cx="12" cy="13" r="4"></circle>
+          </svg>
         </div>
+        <h2 class="role__card-title">I'm a Creator</h2>
+        <p class="role__card-description">Join our platform and get hired by brands to create content and earn money</p>
+        <span class="role__card-arrow">→</span>
       </button>
-    </section>
-  </section>
+    </div>
+
+    <p class="role__footer">
+      Already have an account? <a routerLink="/auth/sign-in" class="role__link">Sign In</a>
+    </p>
+  </div>
 </main>
 
