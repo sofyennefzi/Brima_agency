@@ -154,51 +154,63 @@ export const features = [
 export const caseStudies = [
   {
     id: 1,
-    title: 'Tech Startup Launch',
+    title: 'Tech Product Launch',
     brand: 'TechFlow AI',
-    description: '150 product demo videos across 5 languages',
-    image: '/placeholder-case-1.jpg',
-    results: '3.2M views, 12% conversion rate'
+    description: 'Created 150+ product demo videos across 5 languages with native creators',
+    video: 'assets/videos/video1.mp4',
+    results: '3.2M views',
+    metric: '12% conversion rate',
+    category: 'Product Launch'
   },
   {
     id: 2,
-    title: 'E-commerce Scale',
-    brand: 'StyleHub Fashion',
-    description: 'Monthly creator content program',
-    image: '/placeholder-case-2.jpg',
-    results: '5x ROAS, 450K followers gained'
+    title: 'Fitness App Campaign',
+    brand: 'FitTrack Pro',
+    description: 'TikTok & Instagram creator network driving app downloads',
+    video: 'assets/videos/video2.mp4',
+    results: '2M+ downloads',
+    metric: '$0.80 CPI',
+    category: 'App Marketing'
   },
   {
     id: 3,
-    title: 'App Download Campaign',
-    brand: 'FitTrack Pro',
-    description: 'TikTok & Instagram creator network',
-    image: '/placeholder-case-3.jpg',
-    results: '2M+ app downloads, $0.80 CPI'
+    title: 'E-commerce Content',
+    brand: 'StyleHub Fashion',
+    description: 'Monthly UGC program with 50+ creators for authentic product showcases',
+    video: 'assets/videos/video3.mp4',
+    results: '5x ROAS',
+    metric: '450K new followers',
+    category: 'E-commerce'
   },
   {
     id: 4,
-    title: 'Brand Awareness',
-    brand: 'EcoLiving Co.',
-    description: 'Sustainability storytelling series',
-    image: '/placeholder-case-4.jpg',
-    results: '10M+ organic reach'
+    title: 'Product Unboxing Series',
+    brand: 'AudioPro Gear',
+    description: 'Professional unboxing and review content optimized for conversions',
+    video: 'assets/videos/video4.mp4',
+    results: 'Sold out in 48hrs',
+    metric: '2.8M views',
+    category: 'Product Review'
   },
   {
     id: 5,
-    title: 'Product Launch',
-    brand: 'AudioPro Gear',
-    description: 'Unboxing & review campaign',
-    image: '/placeholder-case-5.jpg',
-    results: 'Sold out in 48 hours'
+    title: 'Brand Storytelling',
+    brand: 'EcoLiving Co.',
+    description: 'Sustainability-focused creator content building authentic brand connection',
+    video: 'assets/videos/video5.mp4',
+    results: '10M+ reach',
+    metric: '250K engagements',
+    category: 'Brand Awareness'
   },
   {
     id: 6,
-    title: 'Education Series',
+    title: 'Tutorial Series',
     brand: 'MasterClass Online',
-    description: 'Tutorial content creation',
-    image: '/placeholder-case-6.jpg',
-    results: '89% completion rate'
+    description: 'Educational content series with expert creators teaching skills',
+    video: 'assets/videos/video6.mp4',
+    results: '89% completion',
+    metric: '500K enrolled',
+    category: 'Education'
   }
 ];
 

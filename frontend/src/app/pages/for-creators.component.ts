@@ -4,7 +4,7 @@ import { RouterLink } from '@angular/router';
 import { NavbarComponent } from '../shared/navbar.component';
 import { FooterComponent } from '../shared/footer.component';
 import { SectionComponent } from '../shared/section.component';
-import { siteConfig, faqsCreators } from '../../config/site';
+import { siteConfig, faqsCreators, caseStudies } from '../../config/site';
 
 @Component({
   selector: 'app-for-creators',
@@ -65,6 +65,66 @@ import { siteConfig, faqsCreators } from '../../config/site';
         </div>
       </app-section>
 
+      <!-- Case Studies Section -->
+      <app-section>
+        <div class="cases-header">
+          <h2 class="cases-header__title">Creator Success Stories</h2>
+          <p class="cases-header__subtitle">See the impact our creators make for top brands</p>
+        </div>
+        <div class="video-cases">
+          <div class="video-case" *ngFor="let caseStudy of caseStudies.slice(0, 6); let i = index" [class.video-case--featured]="i === 0">
+            <div class="video-case__container">
+              <video
+                class="video-case__video"
+                [src]="caseStudy.video"
+                autoplay
+                loop
+                muted
+                playsinline
+                preload="auto"
+              ></video>
+              <div class="video-case__overlay">
+                <div class="video-case__content">
+                  <span class="video-case__category">{{ caseStudy.category }}</span>
+                  <h3 class="video-case__title">{{ caseStudy.title }}</h3>
+                  <p class="video-case__brand">{{ caseStudy.brand }}</p>
+                  <p class="video-case__description">{{ caseStudy.description }}</p>
+                  <div class="video-case__metrics">
+                    <div class="video-case__metric">
+                      <span class="video-case__metric-icon">👁️</span>
+                      <span class="video-case__metric-value">{{ caseStudy.results }}</span>
+                    </div>
+                    <div class="video-case__metric">
+                      <span class="video-case__metric-icon">📈</span>
+                      <span class="video-case__metric-value">{{ caseStudy.metric }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </app-section>
+
+      <!-- Creator Platform Stats -->
+      <app-section [dark]="true">
+        <h2 class="section-title">Creator Platform Stats</h2>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-card__value">$2.5M+</div>
+            <div class="stat-card__label">Paid to Creators</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__value">1,488</div>
+            <div class="stat-card__label">Active Creators</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__value">4.9/5</div>
+            <div class="stat-card__label">Average Rating</div>
+          </div>
+        </div>
+      </app-section>
+
       <app-section>
         <h2 class="section-title">Frequently Asked Questions</h2>
         <div class="faq">
@@ -105,6 +165,7 @@ import { siteConfig, faqsCreators } from '../../config/site';
 })
 export class ForCreatorsComponent {
   siteConfig = siteConfig;
+  caseStudies = caseStudies;
   faqs = faqsCreators.map(faq => ({ ...faq, open: false }));
 
   toggleFaq(index: number): void {
