@@ -66,7 +66,7 @@ import { siteConfig } from '../../config/site';
       left: 0;
       right: 0;
       z-index: 1000;
-      background: rgba(5, 5, 9, 0.9);
+      background: #0c082d;
       backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       transition: all 0.3s ease;
@@ -74,7 +74,7 @@ import { siteConfig } from '../../config/site';
       &__container {
         max-width: 1400px;
         margin: 0 auto;
-        padding: 1.25rem 2rem;
+        padding: 1.5rem 2rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -93,7 +93,7 @@ import { siteConfig } from '../../config/site';
       }
 
       &__logo-img {
-        height: 32px;
+        height: 48px;
         width: auto;
         display: block;
       }
@@ -130,16 +130,16 @@ import { siteConfig } from '../../config/site';
       &__nav {
         display: flex;
         align-items: center;
-        gap: 2.5rem;
+        gap: 3rem;
         flex: 1;
         justify-content: center;
       }
 
       &__link {
         position: relative;
-        font-size: 0.95rem;
-        font-weight: 500;
-        color: rgba(255, 255, 255, 0.8);
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.9);
         text-decoration: none;
         transition: color 0.3s ease;
 
@@ -150,7 +150,7 @@ import { siteConfig } from '../../config/site';
           left: 0;
           width: 0;
           height: 2px;
-          background: var(--accent-color, #6366f1);
+          background: var(--accent-color, #00d9ff);
           transition: width 0.3s ease;
         }
 
@@ -197,14 +197,14 @@ import { siteConfig } from '../../config/site';
         }
 
         &--primary {
-          background: linear-gradient(135deg, #6366f1, #d946ef, #f43f5e);
+          background: linear-gradient(135deg, #00d9ff, #00a8cc);
           color: #fff;
           border: none;
-          box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+          box-shadow: 0 10px 30px rgba(0, 217, 255, 0.3);
 
           &:hover {
             transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.6);
+            box-shadow: 0 15px 40px rgba(0, 217, 255, 0.5);
           }
         }
       }
@@ -222,7 +222,7 @@ import { siteConfig } from '../../config/site';
           left: 0;
           right: 0;
           flex-direction: column;
-          background: rgba(5, 5, 9, 0.98);
+          background: #0c082d;
           backdrop-filter: blur(20px);
           padding: 2rem;
           gap: 1.5rem;
@@ -251,8 +251,8 @@ import { siteConfig } from '../../config/site';
           padding: 1rem 1.5rem;
         }
 
-        &__logo {
-          font-size: 1.25rem;
+        &__logo-img {
+          height: 40px;
         }
       }
     }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, ViewChildren, QueryList, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { NavbarComponent } from '../shared/navbar.component';
@@ -45,6 +45,7 @@ import { caseStudies, siteConfig } from '../../config/site';
           <div class="video-case" *ngFor="let caseStudy of caseStudies; let i = index" [class.video-case--featured]="i === 0">
             <div class="video-case__container">
               <video
+                #videoElement
                 class="video-case__video"
                 [src]="caseStudy.video"
                 autoplay
@@ -155,9 +156,33 @@ import { caseStudies, siteConfig } from '../../config/site';
   `,
   styleUrls: ['./cases.component.scss']
 })
-export class CasesComponent {
+export class CasesComponent implements AfterViewInit {
+  @ViewChildren('videoElement') videoElements!: QueryList<ElementRef<HTMLVideoElement>>;
+
   caseStudies = caseStudies;
   siteConfig = siteConfig;
+
+  ngAfterViewInit(): void {
+    // Synchronize all videos to start at the same time and ensure they're muted
+    setTimeout(() => {
+      const videos = this.videoElements.toArray().map((el: ElementRef<HTMLVideoElement>) => el.nativeElement);
+
+      // Pause all videos first and ensure they're muted
+      videos.forEach((video: HTMLVideoElement) => {
+        video.pause();
+        video.currentTime = 0;
+        video.muted = true; // Force mute
+        video.volume = 0; // Set volume to 0
+      });
+
+      // Play all videos simultaneously
+      setTimeout(() => {
+        videos.forEach((video: HTMLVideoElement) => {
+          video.play().catch((err: any) => console.log('Video autoplay prevented:', err));
+        });
+      }, 100);
+    }, 500);
+  }
 
   leftFaqs = [
     {

@@ -16,21 +16,50 @@ import { siteConfig } from '../../config/site';
       <!-- Hero Section -->
       <section class="hero">
         <div class="hero__container">
-          <p class="hero__tagline">Over 200 Brands work with us. Are you the next?</p>
-
-          <!-- Brand Logos -->
-          <div class="hero__brands">
-            <img *ngFor="let brand of brands" [src]="brand.src" [alt]="brand.alt" class="hero__brand-logo" loading="lazy" />
+          <div class="hero__content">
+            <div class="hero__left">
+              <div class="hero__avatar">
+                <img src="assets/images/logo-white.png" alt="Brima" class="hero__avatar-img" />
+              </div>
+              <h1 class="hero__headline">
+                Connecting<br>
+                Talent to Real<br>
+                <span class="hero__highlight">Opportunities</span>
+              </h1>
+              <p class="hero__description">
+                BRIMA empowers you to showcase your story, connect with clients, and position your creativity at the center of impactful marketing stories.
+              </p>
+            </div>
+            <div class="hero__right">
+              <div class="hero__video-card">
+                <video
+                  class="hero__video"
+                  src="assets/videos/video1.mp4"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                  preload="auto"
+                ></video>
+                <div class="hero__play-button">
+                  <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="30" cy="30" r="30" fill="rgba(255, 255, 255, 0.2)" />
+                    <path d="M24 20L40 30L24 40V20Z" fill="white" />
+                  </svg>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
+      </section>
 
-          <h1 class="hero__headline">
-            <span class="hero__line">Create impact</span>
-            <span class="hero__line">with creators.</span>
-          </h1>
-          <p class="hero__description">The everything platform for videos</p>
-          <a [routerLink]="siteConfig.externalUrls.brandSignUp" class="hero__cta">
-            Become a Brand
-          </a>
+      <!-- Create Collaborate Strip -->
+      <section class="collaborate-strip">
+        <div class="collaborate-strip__container">
+          <h2 class="collaborate-strip__title">CREATE, COLLABORATE AND HELP BRANDS TELLING THEIR STORIES!</h2>
+          <div class="collaborate-strip__tagline">
+            <p>Every brand has a story, that deserves to be heard.</p>
+          </div>
         </div>
       </section>
 
@@ -52,69 +81,83 @@ import { siteConfig } from '../../config/site';
         </div>
       </section>
 
-      <!-- Features Section -->
-      <section class="features-section">
-        <h2 class="section-title">Features that bring your vision to life</h2>
-        <div class="features-grid">
-          <div class="feature-card">
-            <div class="feature-card__number">[ 01 ]</div>
-            <h3 class="feature-card__title">7+ LANGUAGES</h3>
-            <p class="feature-card__description">
-              Discover a wide range of languages and work with native speaking creators based all over the world.
-            </p>
-            <a href="#" class="feature-card__link">Choose your language →</a>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-card__number">[ 02 ]</div>
-            <h3 class="feature-card__title">100% CUSTOMIZEABLE CREATIONS</h3>
-            <p class="feature-card__description">
-              Take full control of your videos with custom briefings and an easy way to communicate with creators. Everything on one platform.
-            </p>
-            <a href="#" class="feature-card__link">Create and customize →</a>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-card__number">[ 03 ]</div>
-            <h3 class="feature-card__title">AI SCRIPTER</h3>
-            <p class="feature-card__description">
-              Discover the latest version of our AI-generated scripter. Create performing scripts using data from over 750 campaigns.
-            </p>
-            <a href="#" class="feature-card__link">Work smarter with our scripter →</a>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-card__number">[ 04 ]</div>
-            <h3 class="feature-card__title">MANAGED SERVICE</h3>
-            <p class="feature-card__description">
-              Let us handle your next campaign with our managed service, giving you back the most valuable thing - your time.
-            </p>
-            <a href="#" class="feature-card__link">Save more time →</a>
+      <!-- Brand Logos Bar -->
+      <section class="brand-logos-bar">
+        <div class="brand-logos-bar__container">
+          <div class="brand-logos-bar__scroll">
+            <img *ngFor="let brand of brandLogos" [src]="brand.src" [alt]="brand.alt" class="brand-logos-bar__logo" loading="lazy" />
           </div>
         </div>
       </section>
 
-
-      <!-- Second Testimonial -->
-      <section class="testimonial-section">
-        <div class="testimonial">
-          <blockquote class="testimonial__quote">
-            "Brima Agency is the platform for connecting your brand with creators, globally and sets a new standard for content creation."
-          </blockquote>
-          <div class="testimonial__author">
-            <strong>Dhia Mazhoud</strong>
-            <span>Entrepreneur</span>
+      <!-- For Content Creators Section -->
+      <section class="creators-section">
+        <div class="creators-section__container">
+          <h2 class="creators-section__title">
+            FOR CONTENT <span class="creators-section__title-highlight">CREATORS</span>
+          </h2>
+          <p class="creators-section__subtitle">
+            We welcome gifted individuals into our exclusive network and access real collaboration opportunities with brands and marketing campaigns.
+          </p>
+          <div class="creators-section__separator"></div>
+          <div class="creators-section__cards">
+            <div class="creator-card">
+              <div class="creator-card__icon">🤝</div>
+              <h3 class="creator-card__title">You start with connection</h3>
+              <p class="creator-card__text">Become part of a growing creative community.</p>
+            </div>
+            <div class="creator-card">
+              <div class="creator-card__icon">✨</div>
+              <h3 class="creator-card__title">It's Matching Time</h3>
+              <p class="creator-card__text">We align your creativity with the right brands.</p>
+            </div>
+            <div class="creator-card">
+              <div class="creator-card__icon">🚀</div>
+              <h3 class="creator-card__title">Real Action now</h3>
+              <p class="creator-card__text">You take part in real marketing projects.</p>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Brand Trust CTA -->
-      <section class="brand-trust-section">
-        <h2 class="brand-trust__title">120+ Brands already use our platform!</h2>
-        <a [routerLink]="siteConfig.externalUrls.brandSignUp" class="brand-trust__button">
-          Become a Brand
-        </a>
+      <!-- For Brands and Agencies Section -->
+      <section class="brands-section">
+        <div class="brands-section__container">
+          <h2 class="brands-section__title">FOR BRANDS AND AGENCIES</h2>
+          <p class="brands-section__subtitle">
+            Brima connects brands, startups, and agencies with exceptional creators who perfectly align with your vision, ready to elevate your projects and campaigns.
+          </p>
+          <div class="brands-section__services">
+            <div class="service-item">
+              <span class="service-item__number">01</span>
+              <p class="service-item__text">Direct creator-client connections</p>
+            </div>
+            <div class="service-item">
+              <span class="service-item__number">02</span>
+              <p class="service-item__text">Integrated content into marketing campaigns</p>
+            </div>
+            <div class="service-item">
+              <span class="service-item__number">03</span>
+              <p class="service-item__text">Talent sourcing for events, ads, and content production</p>
+            </div>
+            <div class="service-item">
+              <span class="service-item__number">04</span>
+              <p class="service-item__text">Strategic creator-based storytelling</p>
+            </div>
+          </div>
+          <a [routerLink]="siteConfig.externalUrls.brandSignUp" class="brands-section__cta">
+            Book a Call
+          </a>
+        </div>
       </section>
+
+      <!-- Final Statement Strip -->
+      <section class="final-statement">
+        <div class="final-statement__container">
+          <h2 class="final-statement__text">Relax.. We take care of it.</h2>
+        </div>
+      </section>
+
 
       <!-- FAQ Section -->
       <section class="faq-section">
@@ -172,18 +215,19 @@ export class HomeComponent implements AfterViewInit {
 
   siteConfig = siteConfig;
 
-  brands = [
-    { src: 'assets/images/brand1.jpg', alt: 'Brand 1' },
-    { src: 'assets/images/brand2.jpg', alt: 'Brand 2' },
-    { src: 'assets/images/brand3.jpg', alt: 'Brand 3' },
-    { src: 'assets/images/brand4.jpg', alt: 'Brand 4' },
-    { src: 'assets/images/brand5.jpg', alt: 'Brand 5' },
+  brandLogos = [
+    { src: 'assets/brand/5.png', alt: 'Brand 5' },
+    { src: 'assets/brand/6.png', alt: 'Brand 6' },
+    { src: 'assets/brand/8.png', alt: 'Brand 8' },
+    { src: 'assets/brand/9.png', alt: 'Brand 9' },
+    { src: 'assets/brand/12.png', alt: 'Brand 12' },
+    { src: 'assets/brand/13.png', alt: 'Brand 13' },
   ];
 
   videos = [
-    { src: 'assets/videos/video1.mp4', title: 'Video 1' },
-    { src: 'assets/videos/video2.mp4', title: 'Video 2' },
-    { src: 'assets/videos/video3.mp4', title: 'Video 3' },
+    { src: 'assets/videos/Jannah.mp4', title: 'Jannah' },
+    { src: 'assets/videos/sidi-bou.mov', title: 'Sidi Bou' },
+    { src: 'assets/videos/Offtopic.mov', title: 'Offtopic' },
     { src: 'assets/videos/video4.mp4', title: 'Video 4' },
     { src: 'assets/videos/video5.mp4', title: 'Video 5' },
   ];
