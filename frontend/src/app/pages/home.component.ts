@@ -13,43 +13,35 @@ import { siteConfig } from '../../config/site';
     <app-navbar></app-navbar>
 
     <main class="home">
-      <!-- Hero Section -->
+      <!-- Hero Section - Full Screen Video Background -->
       <section class="hero">
-        <div class="hero__container">
-          <div class="hero__content">
-            <div class="hero__left">
-              <div class="hero__avatar">
-                <img src="assets/images/logo-white.png" alt="Brima" class="hero__avatar-img" />
-              </div>
-              <h1 class="hero__headline">
-                Connecting<br>
-                Talent to Real<br>
-                <span class="hero__highlight">Opportunities</span>
-              </h1>
-              <p class="hero__description">
-                BRIMA empowers you to showcase your story, connect with clients, and position your creativity at the center of impactful marketing stories.
-              </p>
-            </div>
-            <div class="hero__right">
-              <div class="hero__video-card">
-                <video
-                  class="hero__video"
-                  src="assets/videos/video1.mp4"
-                  autoplay
-                  loop
-                  muted
-                  playsinline
-                  preload="auto"
-                ></video>
-                <div class="hero__play-button">
-                  <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="30" cy="30" r="30" fill="rgba(255, 255, 255, 0.2)" />
-                    <path d="M24 20L40 30L24 40V20Z" fill="white" />
-                  </svg>
-                </div>
-              </div>
-            </div>
+        <!-- Video Background -->
+        <video
+          class="hero__video-bg"
+          src="assets/videos/main.mp4"
+          autoplay
+          loop
+          muted
+          playsinline
+          preload="auto"
+        ></video>
+
+        <!-- Dark Overlay -->
+        <div class="hero__overlay"></div>
+
+        <!-- Centered Content -->
+        <div class="hero__content">
+          <div class="hero__avatar">
+            <img src="assets/images/logo-white.png" alt="Brima" class="hero__avatar-img" />
           </div>
+
+          <h1 class="hero__headline">
+            Connecting Talent to <span class="hero__highlight">Real Opportunities</span>
+          </h1>
+
+          <p class="hero__description">
+            BRIMA empowers you to showcase your story, connect with clients, and position your creativity at the center of impactful marketing stories.
+          </p>
         </div>
       </section>
 
