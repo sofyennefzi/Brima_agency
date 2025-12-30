@@ -364,6 +364,89 @@ $accent-teal: #00a8cc;
   }
 }
 
+// FLOATING AMBASSADOR IMAGES
+.floating-ambassador {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border: 3px solid #ffffff;
+  z-index: 2;
+  animation: floatUpDown 4s ease-in-out infinite;
+
+  @media (max-width: 968px) {
+    width: 40px;
+    height: 40px;
+    border-width: 2px;
+  }
+
+  @media (max-width: 640px) {
+    display: none;
+
+    // Show only top 2 on mobile
+    &--top-left,
+    &--top-right {
+      display: block;
+      width: 35px;
+      height: 35px;
+    }
+  }
+
+  // Top Left
+  &--top-left {
+    top: 8%;
+    left: 5%;
+    animation-delay: 0s;
+  }
+
+  // Top Right
+  &--top-right {
+    top: 8%;
+    right: 5%;
+    animation-delay: 1s;
+  }
+
+  // Left (near first card)
+  &--left {
+    top: 45%;
+    left: 8%;
+    animation-delay: 2s;
+  }
+
+  // Right (near third card)
+  &--right {
+    top: 45%;
+    right: 8%;
+    animation-delay: 1.5s;
+  }
+
+  // Bottom Left
+  &--bottom-left {
+    bottom: 15%;
+    left: 12%;
+    animation-delay: 0.5s;
+  }
+
+  // Bottom Right
+  &--bottom-right {
+    bottom: 15%;
+    right: 12%;
+    animation-delay: 2.5s;
+  }
+}
+
+// Floating Animation
+@keyframes floatUpDown {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
 // FOR BRANDS AND AGENCIES SECTION
 .brands-section {
   padding: 8rem 2rem;

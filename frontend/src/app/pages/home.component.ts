@@ -84,6 +84,14 @@ import { siteConfig } from '../../config/site';
 
       <!-- For Content Creators Section -->
       <section class="creators-section">
+        <!-- Floating Ambassador Images -->
+        <img src="assets/ambassadors picture/Arwa TIOUAJNI.jpg" alt="Ambassador" class="floating-ambassador floating-ambassador--top-left" />
+        <img src="assets/ambassadors picture/emna kaaniche.png" alt="Ambassador" class="floating-ambassador floating-ambassador--top-right" />
+        <img src="assets/ambassadors picture/IMG_7863.jpg" alt="Ambassador" class="floating-ambassador floating-ambassador--left" />
+        <img src="assets/ambassadors picture/Arwa TIOUAJNI.jpg" alt="Ambassador" class="floating-ambassador floating-ambassador--right" />
+        <img src="assets/ambassadors picture/emna kaaniche.png" alt="Ambassador" class="floating-ambassador floating-ambassador--bottom-left" />
+        <img src="assets/ambassadors picture/IMG_7863.jpg" alt="Ambassador" class="floating-ambassador floating-ambassador--bottom-right" />
+
         <div class="creators-section__container">
           <h2 class="creators-section__title">
             FOR CONTENT <span class="creators-section__title-highlight">CREATORS</span>
