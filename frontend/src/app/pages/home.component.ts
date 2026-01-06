@@ -146,9 +146,6 @@ import { siteConfig } from '../../config/site';
               <p class="service-item__text">Strategic creator-based storytelling</p>
             </div>
           </div>
-          <div class="brands-section__tagline">
-            <p>Relax.. We take care of it.</p>
-          </div>
           <a [routerLink]="siteConfig.externalUrls.brandSignUp" class="brands-section__cta">
             Book a Call
           </a>
