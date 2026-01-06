@@ -78,6 +78,7 @@ import { siteConfig } from '../../config/site';
         <div class="brand-logos-bar__container">
           <div class="brand-logos-bar__scroll">
             <img *ngFor="let brand of brandLogos" [src]="brand.src" [alt]="brand.alt" class="brand-logos-bar__logo" loading="lazy" />
+            <img *ngFor="let brand of brandLogos" [src]="brand.src" [alt]="brand.alt" class="brand-logos-bar__logo" loading="lazy" />
           </div>
         </div>
       </section>
@@ -145,16 +146,12 @@ import { siteConfig } from '../../config/site';
               <p class="service-item__text">Strategic creator-based storytelling</p>
             </div>
           </div>
+          <div class="brands-section__tagline">
+            <p>Relax.. We take care of it.</p>
+          </div>
           <a [routerLink]="siteConfig.externalUrls.brandSignUp" class="brands-section__cta">
             Book a Call
           </a>
-        </div>
-      </section>
-
-      <!-- Final Statement Strip -->
-      <section class="final-statement">
-        <div class="final-statement__container">
-          <h2 class="final-statement__text">Relax.. We take care of it.</h2>
         </div>
       </section>
 
@@ -193,7 +190,7 @@ import { siteConfig } from '../../config/site';
 
       <!-- Final CTA -->
       <section class="final-cta-section">
-        <h2 class="final-cta__title">Join the Brima Agency way</h2>
+        <h2 class="final-cta__title">Join the Brima Digital way</h2>
         <div class="final-cta__buttons">
           <a [routerLink]="siteConfig.externalUrls.brandSignUp" class="final-cta__button final-cta__button--primary">
             Become a Brand

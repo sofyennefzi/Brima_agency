@@ -13,6 +13,7 @@ import { siteConfig } from '../../config/site';
         <!-- Logo -->
         <a routerLink="/" class="navbar__logo" aria-label="Home">
           <img src="assets/images/logo-white.png" alt="{{ siteConfig.name }}" class="navbar__logo-img">
+          <span class="navbar__logo-text">BRIMA DIGITAL</span>
         </a>
 
         <!-- Mobile Menu Toggle -->
@@ -74,7 +75,7 @@ import { siteConfig } from '../../config/site';
       &__container {
         max-width: 1400px;
         margin: 0 auto;
-        padding: 1.5rem 2rem;
+        padding: 0.8rem 2rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -83,19 +84,44 @@ import { siteConfig } from '../../config/site';
 
       &__logo {
         display: flex;
+        flex-direction: row;
         align-items: center;
+        gap: 12px;
         text-decoration: none;
-        transition: opacity 0.3s ease;
+        transition: all 0.3s ease;
 
         &:hover {
-          opacity: 0.8;
+          opacity: 0.95;
         }
       }
 
       &__logo-img {
-        height: 48px;
+        height: 42px;
         width: auto;
         display: block;
+        flex-shrink: 0;
+        filter: drop-shadow(0 2px 6px rgba(0, 217, 255, 0.12));
+        transition: filter 0.3s ease;
+      }
+
+      &__logo-text {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #fff;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        white-space: nowrap;
+        flex-shrink: 0;
+        opacity: 0.95;
+        transition: opacity 0.3s ease;
+      }
+
+      &__logo:hover &__logo-img {
+        filter: drop-shadow(0 3px 10px rgba(0, 217, 255, 0.25));
+      }
+
+      &__logo:hover &__logo-text {
+        opacity: 1;
       }
 
       &__toggle {
@@ -137,7 +163,7 @@ import { siteConfig } from '../../config/site';
 
       &__link {
         position: relative;
-        font-size: 1.05rem;
+        font-size: 1.15rem;
         font-weight: 600;
         color: rgba(255, 255, 255, 0.9);
         text-decoration: none;
@@ -216,6 +242,14 @@ import { siteConfig } from '../../config/site';
           display: flex;
         }
 
+        &__logo-img {
+          height: 48px;
+        }
+
+        &__logo-text {
+          font-size: 1.1rem;
+        }
+
         &__nav {
           position: fixed;
           top: 80px;
@@ -251,8 +285,17 @@ import { siteConfig } from '../../config/site';
           padding: 1rem 1.5rem;
         }
 
+        &__logo {
+          gap: 0.5rem;
+        }
+
         &__logo-img {
-          height: 40px;
+          height: 42px;
+        }
+
+        &__logo-text {
+          font-size: 0.95rem;
+          letter-spacing: 0.06em;
         }
       }
     }

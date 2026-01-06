@@ -4,7 +4,7 @@
  */
 
 export const siteConfig = {
-  name: 'Brima Agency',
+  name: 'Brima Digital',
   description: 'The everything platform for performing videos with creators',
 
   // External App URLs
