@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { NavbarComponent } from '../shared/navbar.component';
@@ -35,6 +35,24 @@ import { siteConfig, brandLogos, faqsBrands } from '../../config/site';
         </div>
       </section>
 
+      <!-- Platform Section with Scroll Animation -->
+      <section class="platform-section" #platformSection>
+        <div class="platform-section__container">
+          <div class="platform-section__content">
+            <div class="platform-section__text">
+              <p class="platform-section__quote">
+                <span class="word" *ngFor="let word of quoteWords; let i = index" [style.animation-delay]="(i * 0.1) + 's'">
+                  {{ word }}
+                </span>
+              </p>
+            </div>
+            <div class="platform-section__image animate-on-scroll">
+              <img src="assets/images/slogan-white.png" alt="Brima Digital Slogan" class="platform-section__slogan" />
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Studios Section -->
       <app-section [dark]="true" id="studios">
         <h2 class="section-title">Tailored Video Solutions</h2>
@@ -63,6 +81,7 @@ import { siteConfig, brandLogos, faqsBrands } from '../../config/site';
           </div>
         </div>
       </app-section>
+
 
       <!-- FAQ -->
       <app-section [dark]="true">
@@ -99,10 +118,84 @@ import { siteConfig, brandLogos, faqsBrands } from '../../config/site';
   `,
   styleUrls: ['./for-brands.component.scss']
 })
-export class ForBrandsComponent {
+export class ForBrandsComponent implements AfterViewInit, OnDestroy {
+  @ViewChild('platformSection') platformSection!: ElementRef;
+
   siteConfig = siteConfig;
   brandLogos = brandLogos;
   faqs = faqsBrands.map(faq => ({ ...faq, open: false }));
+  private observer?: IntersectionObserver;
+
+  quoteText = "This platform is a must if you need creator made videos enhanced with ultimate AI-Tools.";
+  quoteWords: string[] = [];
+
+
+  constructor() {
+    this.quoteWords = this.quoteText.split(' ');
+  }
+
+  ngAfterViewInit(): void {
+    this.initScrollAnimations();
+    this.initTextAnimation();
+  }
+
+  ngOnDestroy(): void {
+    if (this.observer) {
+      this.observer.disconnect();
+    }
+  }
+
+  private initScrollAnimations(): void {
+    const options = {
+      root: null,
+      threshold: 0.2,
+      rootMargin: '0px'
+    };
+
+    this.observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, options);
+
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    animatedElements.forEach(el => {
+      if (this.observer) {
+        this.observer.observe(el);
+      }
+    });
+  }
+
+  private initTextAnimation(): void {
+    const textObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const words = entry.target.querySelectorAll('.word');
+
+        if (entry.isIntersecting) {
+          // Animate in when scrolling into view
+          words.forEach((word, index) => {
+            setTimeout(() => {
+              word.classList.add('is-visible');
+            }, index * 100);
+          });
+        } else {
+          // Reset animation when scrolling out of view
+          words.forEach((word) => {
+            word.classList.remove('is-visible');
+          });
+        }
+      });
+    }, {
+      threshold: 0.3,
+      rootMargin: '0px'
+    });
+
+    if (this.platformSection) {
+      textObserver.observe(this.platformSection.nativeElement);
+    }
+  }
 
   toggleFaq(index: number): void {
     this.faqs[index].open = !this.faqs[index].open;

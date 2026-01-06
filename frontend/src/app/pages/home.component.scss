@@ -166,14 +166,17 @@ $accent-teal: #00a8cc;
 // COLLABORATE STRIP SECTION
 .collaborate-strip {
   background: darken($brand-color, 3%);
-  padding: 4rem 2rem;
-  border-top: 1px solid $border-color;
+  padding: 5rem 2rem;
+  position: relative;
   border-bottom: 1px solid $border-color;
+
 
   &__container {
     max-width: 1400px;
     margin: 0 auto;
     text-align: center;
+    position: relative;
+    z-index: 1;
   }
 
   &__title {
@@ -198,9 +201,10 @@ $accent-teal: #00a8cc;
 // BRAND LOGOS BAR
 .brand-logos-bar {
   background: darken($brand-color, 5%);
-  padding: 3rem 2rem;
+  padding: 4rem 2rem;
   overflow: hidden;
   position: relative;
+  border-bottom: 1px solid $border-color;
 
   &__container {
     max-width: 900px;
@@ -285,6 +289,7 @@ $accent-teal: #00a8cc;
   background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 50%, #f5f7ff 100%);
   position: relative;
   overflow: hidden;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 
   // Optional decorative circles (like in screenshot)
   &::before,
@@ -339,10 +344,7 @@ $accent-teal: #00a8cc;
   }
 
   &__separator {
-    width: 80px;
-    height: 2px;
-    background: #00E1FF;
-    margin: 3rem auto;
+    display: none; // Removed hard line, using gradient transitions instead
   }
 
   &__cards {
@@ -493,7 +495,9 @@ $accent-teal: #00a8cc;
 .brands-section {
   padding: 8rem 2rem;
   background: darken($brand-color, 3%);
+  position: relative;
   border-top: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
 
   &__container {
     max-width: 1200px;
@@ -625,6 +629,8 @@ $accent-teal: #00a8cc;
   max-width: 1800px;
   margin: 0 auto;
   background: $brand-color;
+  position: relative;
+  border-bottom: 1px solid $border-color;
 }
 
 .videos-container {
@@ -666,6 +672,7 @@ $accent-teal: #00a8cc;
 .faq-section {
   padding: 8rem 2rem;
   background: darken($brand-color, 3%);
+  position: relative;
   border-top: 1px solid $border-color;
 }
 

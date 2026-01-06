@@ -167,25 +167,18 @@ import { siteConfig } from '../../config/site';
         font-weight: 600;
         color: rgba(255, 255, 255, 0.9);
         text-decoration: none;
-        transition: color 0.3s ease;
-
-        &::after {
-          content: '';
-          position: absolute;
-          bottom: -4px;
-          left: 0;
-          width: 0;
-          height: 2px;
-          background: var(--accent-color, #00d9ff);
-          transition: width 0.3s ease;
-        }
+        transition: all 0.4s ease;
+        background: linear-gradient(135deg, #fff 0%, #fff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
 
         &:hover, &--active {
-          color: #fff;
-
-          &::after {
-            width: 100%;
-          }
+          background: linear-gradient(135deg, #00d9ff 0%, #00a8cc 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          transform: translateY(-1px);
         }
       }
 
