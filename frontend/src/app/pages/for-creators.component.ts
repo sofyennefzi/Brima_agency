@@ -4,12 +4,13 @@ import { RouterLink } from '@angular/router';
 import { NavbarComponent } from '../shared/navbar.component';
 import { FooterComponent } from '../shared/footer.component';
 import { SectionComponent } from '../shared/section.component';
+import { CommunitySectionComponent } from '../components/community-section/community-section.component';
 import { siteConfig, faqsCreators } from '../../config/site';
 
 @Component({
   selector: 'app-for-creators',
   standalone: true,
-  imports: [CommonModule, RouterLink, NavbarComponent, FooterComponent, SectionComponent],
+  imports: [CommonModule, RouterLink, NavbarComponent, FooterComponent, SectionComponent, CommunitySectionComponent],
   template: `
     <app-navbar></app-navbar>
 
@@ -101,6 +102,9 @@ import { siteConfig, faqsCreators } from '../../config/site';
           </div>
         </div>
       </app-section>
+
+      <!-- Community Section -->
+      <app-community-section></app-community-section>
 
       <!-- FAQ -->
       <app-section>

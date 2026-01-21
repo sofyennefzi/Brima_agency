@@ -1,0 +1,200 @@
+
+// Minimal Community Hero Section
+.community-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  background: #ffffff;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    padding: 3rem 1.5rem;
+    min-height: auto;
+  }
+}
+
+// Arc of Image Tiles
+.image-arc {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  height: 200px;
+  margin-bottom: 3rem;
+
+  @media (max-width: 768px) {
+    height: 150px;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 480px) {
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+}
+
+// Individual Tile
+.tile {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
+
+  @media (max-width: 768px) {
+    width: 70px;
+    height: 70px;
+    border-radius: 18px;
+  }
+
+  @media (max-width: 480px) {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+    transform: none !important;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+  }
+
+  // Tile Positioning & Rotation (Arc formation)
+  &.tile-1 {
+    left: 0;
+    bottom: 20px;
+    transform: rotate(-18deg);
+  }
+
+  &.tile-2 {
+    left: 10%;
+    bottom: 60px;
+    transform: rotate(-12deg);
+  }
+
+  &.tile-3 {
+    left: 21%;
+    bottom: 90px;
+    transform: rotate(-6deg);
+  }
+
+  &.tile-4 {
+    left: 33%;
+    bottom: 110px;
+    transform: rotate(-2deg);
+  }
+
+  &.tile-5 {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 120px;
+  }
+
+  &.tile-6 {
+    right: 33%;
+    bottom: 110px;
+    transform: rotate(2deg);
+  }
+
+  &.tile-7 {
+    right: 21%;
+    bottom: 90px;
+    transform: rotate(6deg);
+  }
+
+  &.tile-8 {
+    right: 10%;
+    bottom: 60px;
+    transform: rotate(12deg);
+  }
+
+  &.tile-9 {
+    right: 0;
+    bottom: 20px;
+    transform: rotate(18deg);
+  }
+}
+
+// Hero Title
+.hero-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  @media (max-width: 768px) {
+    font-size: clamp(2rem, 6vw, 2.5rem);
+    margin-bottom: 1.25rem;
+  }
+}
+
+.title-line-1 {
+  color: #1c2440;
+}
+
+.title-line-2 {
+  color: #00d5ff;
+}
+
+// Hero Subtitle
+.hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: #6c7280;
+  line-height: 1.6;
+  margin: 0 0 2.5rem;
+  max-width: 560px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 2rem;
+    font-size: 1rem;
+  }
+}
+
+// CTA Button
+.cta-button {
+  display: inline-block;
+  padding: 0.875rem 2.5rem;
+  background: #1c2440;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 30px;
+  box-shadow: 0 4px 12px rgba(28, 36, 64, 0.2);
+  transition: all 0.25s ease;
+
+  &:hover {
+    background: #252d4d;
+    box-shadow: 0 6px 16px rgba(28, 36, 64, 0.3);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.75rem 2rem;
+    font-size: 0.9375rem;
+  }
+}
+
+
