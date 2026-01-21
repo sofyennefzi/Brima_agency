@@ -13,7 +13,7 @@ import { siteConfig } from '../../../config/site';
 export class CommunitySectionComponent {
   siteConfig = siteConfig;
 
-  // Array of 9 community images for the arc
+  // Array of 12 community images for the arc
   communityImages = [
     'assets/community pictuers/021501FB-AB8E-45C4-93B0-696BF21AA95C.jpg',
     'assets/community pictuers/0c579caa-f59b-4012-a981-ddca97fe974f.jpg',
@@ -23,7 +23,10 @@ export class CommunitySectionComponent {
     'assets/community pictuers/IMG_5970.JPG',
     'assets/community pictuers/IMG_7572.PNG',
     'assets/community pictuers/IMG_7573.PNG',
-    'assets/community pictuers/IMG_7574.PNG'
+    'assets/community pictuers/IMG_7574.PNG',
+    'assets/community pictuers/IMG_7587.PNG',
+    'assets/community pictuers/IMG_7588.PNG',
+    'assets/community pictuers/Photo on 16-12-2025 at 4.07 PM #2.jpg'
   ];
 }
 
