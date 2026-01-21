@@ -18,11 +18,11 @@ import { siteConfig, faqsCreators } from '../../config/site';
       <section class="hero">
         <div class="hero__container">
           <h1 class="hero__headline">
-            <span class="hero__word">Turn your creativity</span>
-            <span class="hero__word hero__word--accent">into income</span>
+            <span class="hero__word">Ready to showcase</span>
+            <span class="hero__word hero__word--accent">your talent?</span>
           </h1>
           <p class="hero__subtitle">
-            Join our network of professional creators and get paid to create engaging video content for top brands.
+            Designers, videographers, musicians, athletes, and creators of all kinds, Brima is your spot.
           </p>
           <div class="hero__cta-buttons">
             <a [routerLink]="siteConfig.externalUrls.creatorSignUp" class="btn btn--primary btn--large">
