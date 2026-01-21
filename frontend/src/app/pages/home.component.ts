@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ElementRef, ViewChildren, QueryList } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, ViewChildren, QueryList, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { NavbarComponent } from '../shared/navbar.component';
@@ -181,32 +181,56 @@ import { siteConfig } from '../../config/site';
 
       <!-- For Brands and Agencies Section -->
       <section class="brands-section">
+        <!-- Section Title (Above Everything) -->
+        <h2 class="brands-section__main-title">FOR BRANDS AND AGENCIES</h2>
+
         <div class="brands-section__container">
-          <h2 class="brands-section__title">FOR BRANDS AND AGENCIES</h2>
-          <p class="brands-section__subtitle">
-            Brima connects brands, startups, and agencies with exceptional creators who perfectly align with your vision, ready to elevate your projects and campaigns.
-          </p>
-          <div class="brands-section__services">
-            <div class="service-item">
-              <span class="service-item__number">01</span>
-              <p class="service-item__text">Direct creator-client connections</p>
-            </div>
-            <div class="service-item">
-              <span class="service-item__number">02</span>
-              <p class="service-item__text">Integrated content into marketing campaigns</p>
-            </div>
-            <div class="service-item">
-              <span class="service-item__number">03</span>
-              <p class="service-item__text">Talent sourcing for events, ads, and content production</p>
-            </div>
-            <div class="service-item">
-              <span class="service-item__number">04</span>
-              <p class="service-item__text">Strategic creator-based storytelling</p>
+          <!-- Left Column: Video -->
+          <div class="brands-section__video-block">
+            <div class="brands-video-wrapper">
+              <video
+                #brandsVideo
+                class="brands-video"
+                src="assets/videos/main.mp4"
+                autoplay
+                loop
+                muted
+                playsinline
+                preload="auto"
+              ></video>
+              <div class="brands-video__overlay" (click)="toggleBrandsVideo()">
+                <button class="brands-video__play-btn" [class.brands-video__play-btn--playing]="brandsVideoPlaying">
+                  <svg *ngIf="!brandsVideoPlaying" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="5 3 19 12 5 21 5 3"/>
+                  </svg>
+                  <svg *ngIf="brandsVideoPlaying" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="6" y="4" width="4" height="16"/>
+                    <rect x="14" y="4" width="4" height="16"/>
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
-          <a [routerLink]="siteConfig.externalUrls.brandSignUp" class="brands-section__cta">
-            Book a Call
-          </a>
+
+          <!-- Right Column: Content -->
+          <div class="brands-section__content-block">
+            <p class="brands-section__subtitle">
+              Brima connects brands, startups, and agencies with exceptional creators who perfectly align with your vision, ready to elevate your projects and campaigns.
+            </p>
+
+            <!-- Service List -->
+            <div class="brands-section__services">
+              <div class="service-item" *ngFor="let service of brandServices; let i = index" [style.animation-delay.ms]="i * 100">
+                <div class="service-item__badge">{{ service.number }}</div>
+                <p class="service-item__text">{{ service.text }}</p>
+              </div>
+            </div>
+
+            <!-- CTA Button -->
+            <a [routerLink]="siteConfig.externalUrls.brandSignUp" class="brands-section__cta">
+              Book a Call
+            </a>
+          </div>
         </div>
       </section>
 
@@ -264,8 +288,17 @@ import { siteConfig } from '../../config/site';
 })
 export class HomeComponent implements AfterViewInit {
   @ViewChildren('videoElement') videoElements!: QueryList<ElementRef<HTMLVideoElement>>;
+  @ViewChild('brandsVideo') brandsVideoRef!: ElementRef<HTMLVideoElement>;
 
   siteConfig = siteConfig;
+  brandsVideoPlaying = true;
+
+  brandServices = [
+    { number: '01', text: 'Direct creator-client connections' },
+    { number: '02', text: 'Integrated content into marketing campaigns' },
+    { number: '03', text: 'Talent sourcing for events, ads, and content production' },
+    { number: '04', text: 'Strategic creator-based storytelling' }
+  ];
 
   brandLogos = [
     { src: 'assets/brand/5.png', alt: 'Brand 5' },
@@ -319,5 +352,18 @@ export class HomeComponent implements AfterViewInit {
 
   toggleRightFaq(index: number): void {
     this.rightFaqs[index].open = !this.rightFaqs[index].open;
+  }
+
+  toggleBrandsVideo(): void {
+    const video = this.brandsVideoRef?.nativeElement;
+    if (!video) return;
+
+    if (this.brandsVideoPlaying) {
+      video.pause();
+      this.brandsVideoPlaying = false;
+    } else {
+      video.play();
+      this.brandsVideoPlaying = true;
+    }
   }
 }
