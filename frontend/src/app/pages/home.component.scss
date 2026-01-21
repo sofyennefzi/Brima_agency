@@ -527,6 +527,7 @@ background: linear-gradient(
     margin: 0 auto 4.5rem;
     max-width: 1040px;
     align-items: start;
+    position: relative;
 
     @media (max-width: 968px) {
       grid-template-columns: 1fr;
@@ -539,17 +540,27 @@ background: linear-gradient(
       margin-bottom: 3.5rem;
     }
   }
+}
 
-  // CTA BUTTON CONTAINER
-  &__cta {
-    margin-top: 3.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+// HORIZONTAL TIMELINE
+.creators-timeline {
+  position: absolute;
+  top: 24px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(199, 210, 224, 0.5) 5%,
+    rgba(199, 210, 224, 0.8) 50%,
+    rgba(199, 210, 224, 0.5) 95%,
+    transparent 100%
+  );
+  z-index: 1;
 
-    @media (max-width: 640px) {
-      margin-top: 2.5rem;
-    }
+  @media (max-width: 968px) {
+    display: none;
   }
 }
 
@@ -575,57 +586,37 @@ background: linear-gradient(
     justify-content: center;
     align-items: center;
     margin-bottom: 2rem;
+    position: relative;
 
     @media (max-width: 640px) {
       margin-bottom: 1.75rem;
     }
   }
 
-  // ICON BADGE - Soft cyan gradient with shadow
-  &__icon-badge {
-    width: 96px;
-    height: 96px;
+  // SOCIAL ICONS GROUP (for step 1)
+  &__social-group {
+    display: flex;
+    gap: 0.5rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  // TIMELINE BADGE (for steps 2 & 3)
+  &__timeline-badge {
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #00E5FF 0%, #22E1F9 50%, #00C8E6 100%);
+    background: #00F5FF;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow:
-      0 10px 30px rgba(0, 229, 255, 0.3),
-      0 4px 12px rgba(0, 229, 255, 0.2);
-    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 245, 255, 0.4);
     position: relative;
+    z-index: 2;
 
     @media (max-width: 640px) {
-      width: 84px;
-      height: 84px;
-    }
-
-    // Subtle outer glow effect
-    &::before {
-      content: '';
-      position: absolute;
-      inset: -6px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, rgba(0, 229, 255, 0.4), rgba(34, 225, 249, 0.3));
-      z-index: -1;
-      opacity: 0;
-      transition: opacity 0.35s ease;
-      filter: blur(8px);
-    }
-  }
-
-  &:hover &__icon-badge::before {
-    opacity: 1;
-  }
-
-  &__icon {
-    font-size: 2.5rem;
-    line-height: 1;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
-
-    @media (max-width: 640px) {
-      font-size: 2.25rem;
+      width: 42px;
+      height: 42px;
     }
   }
 
@@ -650,6 +641,87 @@ background: linear-gradient(
     line-height: 1.7;
     margin: 0;
     font-weight: 400;
+  }
+}
+
+// SOCIAL MEDIA ICONS (for step 1)
+.social-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  transform: rotate(-5deg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+  &:nth-child(2) {
+    transform: rotate(2deg) translateY(-2px);
+  }
+
+  &:nth-child(3) {
+    transform: rotate(-3deg) translateY(1px);
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  &--facebook {
+    background: #1877F2;
+    color: #ffffff;
+  }
+
+  &--instagram {
+    background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4);
+    color: #ffffff;
+  }
+
+  &--tiktok {
+    background: #000000;
+    color: #ffffff;
+  }
+
+  &:hover {
+    transform: rotate(0deg) scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  }
+
+  @media (max-width: 640px) {
+    width: 32px;
+    height: 32px;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+
+// TIMELINE BADGE ICON
+.timeline-badge__icon {
+  width: 24px;
+  height: 24px;
+  stroke: #141B3B;
+  stroke-width: 2.5;
+
+  @media (max-width: 640px) {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+// CREATORS SECTION CTA CONTAINER
+.creators-section__cta {
+  margin-top: 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 640px) {
+    margin-top: 2.5rem;
   }
 }
 
