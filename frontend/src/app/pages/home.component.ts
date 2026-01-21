@@ -29,6 +29,9 @@ import { siteConfig } from '../../config/site';
         <!-- Dark Overlay -->
         <div class="hero__overlay"></div>
 
+        <!-- Bottom Gradient Transition -->
+        <div class="hero__gradient-transition"></div>
+
         <!-- Centered Content -->
         <div class="hero__content">
           <div class="hero__avatar">
@@ -45,18 +48,11 @@ import { siteConfig } from '../../config/site';
         </div>
       </section>
 
-      <!-- Create Collaborate Strip -->
-      <section class="collaborate-strip">
-        <div class="collaborate-strip__container">
-          <h2 class="collaborate-strip__title">CREATE, COLLABORATE AND HELP BRANDS TELLING THEIR STORIES!</h2>
-          <div class="collaborate-strip__tagline">
-            <p>Every brand has a story, that deserves to be heard.</p>
-          </div>
-        </div>
-      </section>
-
       <!-- Video Showcase Grid -->
       <section class="videos-section">
+                <div class="collaborate-strip__container">
+          <h2 class="collaborate-strip__title">Create, Collaborate And Help Brands Telling Their Stories!</h2>
+        </div>
         <div class="videos-container">
           <div class="video-card" *ngFor="let v of videos">
             <video
@@ -72,7 +68,12 @@ import { siteConfig } from '../../config/site';
           </div>
         </div>
       </section>
-
+      <!-- Brand Story Tagline -->
+      <section class="brand-story-strip">
+        <div class="brand-story-strip__container">
+          <p class="brand-story-strip__tagline">Every brand has a story, that deserves to be heard.</p>
+        </div>
+      </section>
       <!-- Brand Logos Bar -->
       <section class="brand-logos-bar">
         <div class="brand-logos-bar__container">
@@ -85,38 +86,74 @@ import { siteConfig } from '../../config/site';
 
       <!-- For Content Creators Section -->
       <section class="creators-section">
-        <!-- Floating Ambassador Images -->
-        <img src="assets/ambassadors picture/Arwa TIOUAJNI.jpg" alt="Ambassador" class="floating-ambassador floating-ambassador--top-left" />
-        <img src="assets/ambassadors picture/emna kaaniche.png" alt="Ambassador" class="floating-ambassador floating-ambassador--top-right" />
-        <img src="assets/ambassadors picture/IMG_7863.jpg" alt="Ambassador" class="floating-ambassador floating-ambassador--left" />
-        <img src="assets/ambassadors picture/Arwa TIOUAJNI.jpg" alt="Ambassador" class="floating-ambassador floating-ambassador--right" />
-        <img src="assets/ambassadors picture/emna kaaniche.png" alt="Ambassador" class="floating-ambassador floating-ambassador--bottom-left" />
-        <img src="assets/ambassadors picture/IMG_7863.jpg" alt="Ambassador" class="floating-ambassador floating-ambassador--bottom-right" />
+        <!-- Floating Ambassador Images (8 avatars around edges) -->
+        <img src="assets/ambassadors picture/Arwa TIOUAJNI.jpg" alt="Ambassador" class="floating-ambassador floating-ambassador--1" />
+        <img src="assets/ambassadors picture/emna kaaniche.png" alt="Ambassador" class="floating-ambassador floating-ambassador--2" />
+        <img src="assets/ambassadors picture/IMG_7863.jpg" alt="Ambassador" class="floating-ambassador floating-ambassador--3" />
+        <img src="assets/ambassadors picture/eya.jpg" alt="Ambassador" class="floating-ambassador floating-ambassador--4" />
+        <img src="assets/ambassadors picture/helmi.jpg" alt="Ambassador" class="floating-ambassador floating-ambassador--5" />
+        <img src="assets/ambassadors picture/mazhoud.jpg" alt="Ambassador" class="floating-ambassador floating-ambassador--6" />
+        <img src="assets/ambassadors picture/Arwa TIOUAJNI.jpg" alt="Ambassador" class="floating-ambassador floating-ambassador--7" />
+        <img src="assets/ambassadors picture/emna kaaniche.png" alt="Ambassador" class="floating-ambassador floating-ambassador--8" />
 
         <div class="creators-section__container">
+          <!-- Title -->
           <h2 class="creators-section__title">
             FOR CONTENT <span class="creators-section__title-highlight">CREATORS</span>
           </h2>
+
+          <!-- Subtitle -->
           <p class="creators-section__subtitle">
             We welcome gifted individuals into our exclusive network and access real collaboration opportunities with brands and marketing campaigns.
           </p>
+
+          <!-- Subtle Separator Line -->
           <div class="creators-section__separator"></div>
-          <div class="creators-section__cards">
-            <div class="creator-card">
-              <div class="creator-card__icon">🤝</div>
-              <h3 class="creator-card__title">You start with connection</h3>
-              <p class="creator-card__text">Become part of a growing creative community.</p>
+
+          <!-- 3-Step Process (Horizontal Row) -->
+          <div class="creators-section__steps">
+            <!-- Step 1: Connection -->
+            <div class="creator-step">
+              <div class="creator-step__icon-wrapper">
+                <div class="creator-step__icon-badge">
+                  <span class="creator-step__icon">🤝</span>
+                </div>
+              </div>
+              <h3 class="creator-step__title">You start with connection</h3>
+              <p class="creator-step__text">Become part of a growing creative community.</p>
             </div>
-            <div class="creator-card">
-              <div class="creator-card__icon">✨</div>
-              <h3 class="creator-card__title">It's Matching Time</h3>
-              <p class="creator-card__text">We align your creativity with the right brands.</p>
+
+            <!-- Step 2: Matching -->
+            <div class="creator-step">
+              <div class="creator-step__icon-wrapper">
+                <div class="creator-step__icon-badge">
+                  <span class="creator-step__icon">✨</span>
+                </div>
+              </div>
+              <h3 class="creator-step__title">It's Matching Time</h3>
+              <p class="creator-step__text">We align your creativity with the right brands.</p>
             </div>
-            <div class="creator-card">
-              <div class="creator-card__icon">🚀</div>
-              <h3 class="creator-card__title">Real Action now</h3>
-              <p class="creator-card__text">You take part in real marketing projects.</p>
+
+            <!-- Step 3: Action -->
+            <div class="creator-step">
+              <div class="creator-step__icon-wrapper">
+                <div class="creator-step__icon-badge">
+                  <span class="creator-step__icon">🚀</span>
+                </div>
+              </div>
+              <h3 class="creator-step__title">Real Action now</h3>
+              <p class="creator-step__text">You take part in real marketing projects.</p>
             </div>
+          </div>
+
+          <!-- CTA Button (Centered) -->
+          <div class="creators-section__cta">
+            <a [routerLink]="siteConfig.externalUrls.creatorSignUp" class="creators-cta-button">
+              <span class="creators-cta-button__text">Join the Network</span>
+              <svg class="creators-cta-button__icon" width="20" height="20" viewBox="0 0 20 20">
+                <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </a>
           </div>
         </div>
       </section>

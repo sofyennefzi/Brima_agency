@@ -52,14 +52,68 @@ $accent-teal: #00a8cc;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-      180deg,
-      rgba(12, 8, 45, 0.75) 0%,
-      rgba(12, 8, 45, 0.65) 40%,
-      rgba(12, 8, 45, 0.7) 60%,
-      rgba(12, 8, 45, 0.8) 100%
-    );
+    background:
+      // Radial gradient from center-top (transparent to dark)
+      radial-gradient(
+        ellipse at 50% 0%,
+        rgba(12, 8, 45, 0.3) 0%,
+        rgba(12, 8, 45, 0.7) 50%,
+        rgba(12, 8, 45, 0.85) 100%
+      ),
+      // Vertical gradient (subtle top, strong bottom)
+      linear-gradient(
+        180deg,
+        rgba(12, 8, 45, 0.6) 0%,
+        rgba(12, 8, 45, 0.5) 30%,
+        rgba(12, 8, 45, 0.7) 60%,
+        rgba(12, 8, 45, 0.85) 85%,
+        rgba(0, 0, 0, 0.9) 100%
+      );
     z-index: 2;
+  }
+
+  // Bottom Shadow Overlay - Strong dark gradient at the bottom
+  &__overlay::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.3) 0%,
+      rgba(0, 0, 0, 0.7) 25%,
+      rgba(0, 0, 0, 0.4) 50%,
+      rgba(0, 0, 0, 0.2) 75%,
+      transparent 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  // Smooth Gradient Transition to Next Section
+  &__gradient-transition {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+background: linear-gradient(
+  to bottom,
+  rgba(12, 6, 40, 0) 0%,
+  rgba(18, 10, 55, 0.35) 35%,
+  rgba(10, 8, 40, 0.8) 80%,
+  rgba(8, 8, 36, 1) 100%
+);
+
+
+    z-index: 2;
+    pointer-events: none;
+
+    @media (max-width: 640px) {
+      height: 150px;
+    }
   }
 
   // Centered Content Container
@@ -166,7 +220,7 @@ $accent-teal: #00a8cc;
 // COLLABORATE STRIP SECTION
 .collaborate-strip {
   background: darken($brand-color, 3%);
-  padding: 5rem 2rem;
+  padding: 5rem 2rem 3rem;
   position: relative;
   border-bottom: 1px solid $border-color;
 
@@ -183,97 +237,139 @@ $accent-teal: #00a8cc;
     font-size: clamp(1.5rem, 4vw, 2.5rem);
     font-weight: 800;
     letter-spacing: 0.05em;
-    text-transform: uppercase;
-    margin: 0 0 1.5rem;
+    margin: 0;
     color: $text-color;
-  }
-
-  &__tagline {
-    p {
-      font-size: clamp(1.25rem, 3vw, 2rem);
-      font-weight: 700;
-      color: $text-color;
-      margin: 0;
-    }
   }
 }
 
-// BRAND LOGOS BAR
-.brand-logos-bar {
-  background: darken($brand-color, 5%);
-  padding: 4rem 2rem;
-  overflow: hidden;
+// BRAND STORY STRIP SECTION (above brand logos)
+.brand-story-strip {
+  background: darken($brand-color, 3%);
+  padding: 3rem 2rem 1rem;
   position: relative;
-  border-bottom: 1px solid $border-color;
+
+  @media (max-width: 640px) {
+    padding: 2rem 1.5rem 0.75rem;
+  }
 
   &__container {
-    max-width: 900px;
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__tagline {
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    font-weight: 700;
+    color: $text-color;
+    margin: 0;
+  }
+}
+
+// BRAND LOGOS BAR - Same background as brand story strip (seamless continuation)
+.brand-logos-bar {
+  background: darken($brand-color, 3%);
+  padding: 1rem 2rem 4rem;
+  overflow: hidden;
+  position: relative;
+
+  @media (max-width: 640px) {
+    padding: 0.75rem 1.5rem 3rem;
+  }
+
+  &__container {
+    max-width: 1200px;
     margin: 0 auto;
     overflow: hidden;
     position: relative;
 
+    // Subtle fade edges for smooth scroll effect
     &::before,
     &::after {
       content: '';
       position: absolute;
       top: 0;
       bottom: 0;
-      width: 100px;
+      width: 80px;
       z-index: 2;
       pointer-events: none;
+      opacity: 1;
     }
 
     &::before {
       left: 0;
-      background: linear-gradient(to right, darken($brand-color, 5%), transparent);
+      background: linear-gradient(to right, darken($brand-color, 3%), transparent);
     }
 
     &::after {
       right: 0;
-      background: linear-gradient(to left, darken($brand-color, 5%), transparent);
+      background: linear-gradient(to left, darken($brand-color, 3%), transparent);
+    }
+
+    @media (max-width: 640px) {
+      &::before,
+      &::after {
+        width: 40px;
+      }
     }
   }
 
   &__scroll {
     display: flex;
     align-items: center;
-    gap: 8rem;
-    animation: scrollLogos 25s linear infinite;
+    justify-content: center;
+    gap: 6rem;
+    animation: scrollLogos 30s linear infinite;
     width: max-content;
-    padding: 0 4rem;
+    padding: 0 3rem;
+    will-change: transform;
 
     @media (max-width: 968px) {
-      gap: 6rem;
+      gap: 4rem;
     }
 
     @media (max-width: 640px) {
-      gap: 4rem;
+      gap: 3rem;
+      padding: 0 2rem;
     }
   }
 
   &__logo {
-    height: 50px;
+    height: 80px;
     width: auto;
-    min-width: 120px;
+    min-width: 140px;
+    max-width: 260px;
     object-fit: contain;
     filter: brightness(0) invert(1);
-    opacity: 0.6;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0.65;
+    transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
     flex-shrink: 0;
+    animation: fadeInLogo 0.8s ease-out backwards;
+
+    // Stagger animation delay for each logo
+    @for $i from 1 through 12 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{$i * 0.1}s;
+      }
+    }
 
     &:hover {
-      opacity: 1;
-      transform: scale(1.1);
-      animation-play-state: paused;
+      opacity: 0.95;
+      transform: scale(1.08);
+      filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
     }
 
     @media (max-width: 640px) {
-      height: 40px;
-      min-width: 100px;
+      height: 60px;
+      min-width: 110px;
+      max-width: 200px;
     }
   }
 }
 
+// Smooth infinite scroll animation
 @keyframes scrollLogos {
   0% {
     transform: translateX(0);
@@ -283,201 +379,469 @@ $accent-teal: #00a8cc;
   }
 }
 
-// FOR CONTENT CREATORS SECTION
+// Fade-in animation for logos
+@keyframes fadeInLogo {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 0.5;
+    transform: translateY(0);
+  }
+}
+
+// FOR CONTENT CREATORS SECTION - REFINED REFERENCE DESIGN
 .creators-section {
-  padding: 8rem 2rem;
-  background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 50%, #f5f7ff 100%);
+  padding: 7.5rem 2rem;
+  background: #F4F6FB;
   position: relative;
   overflow: hidden;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 
-  // Optional decorative circles (like in screenshot)
+  @media (max-width: 968px) {
+    padding: 5.5rem 2rem;
+  }
+
+  @media (max-width: 640px) {
+    padding: 4.5rem 1.5rem;
+  }
+
+  // Large faint circular blobs for visual texture (cyan tinted, blurred)
   &::before,
   &::after {
     content: '';
     position: absolute;
-    width: 200px;
-    height: 200px;
     border-radius: 50%;
-    background: rgba(0, 225, 255, 0.08);
+    background: radial-gradient(circle, rgba(0, 229, 255, 0.15) 0%, rgba(34, 225, 249, 0.08) 40%, transparent 70%);
     z-index: 0;
+    pointer-events: none;
+    filter: blur(60px);
+    opacity: 0.6;
   }
 
   &::before {
-    top: 10%;
-    left: -100px;
+    width: 500px;
+    height: 500px;
+    top: -150px;
+    left: -200px;
+
+    @media (max-width: 968px) {
+      width: 350px;
+      height: 350px;
+      top: -100px;
+      left: -150px;
+    }
   }
 
   &::after {
-    bottom: 10%;
-    right: -100px;
+    width: 600px;
+    height: 600px;
+    bottom: -200px;
+    right: -250px;
+
+    @media (max-width: 968px) {
+      width: 400px;
+      height: 400px;
+      bottom: -150px;
+      right: -180px;
+    }
   }
 
   &__container {
-    max-width: 1200px;
+    max-width: 1140px;
     margin: 0 auto;
     text-align: center;
     position: relative;
     z-index: 1;
   }
 
+  // TITLE - Bold, Uppercase, Two-tone
   &__title {
-    font-size: clamp(2rem, 5vw, 3rem);
+    font-size: clamp(2.5rem, 5.5vw, 3.5rem);
     font-weight: 800;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.03em;
     text-transform: uppercase;
-    margin: 0 0 2rem;
-    color: #1a1a2e;
+    margin: 0 0 1.5rem;
+    color: #1B1F3B; // Dark navy
+    line-height: 1.15;
 
-    // Split color effect: "FOR CONTENT" dark, "CREATORS" cyan
-    .creators-section__title-highlight {
-      color: #00E1FF;
+    @media (max-width: 640px) {
+      font-size: clamp(2rem, 7vw, 2.5rem);
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.02em;
     }
   }
 
+  // CREATORS highlight in cyan
+  &__title-highlight {
+    color: #00E5FF;
+    background: linear-gradient(135deg, #00E5FF 0%, #00D4ED 50%, #00C2DB 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+  }
+
+  // SUBTITLE - Centered, medium weight, gray
   &__subtitle {
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    color: #6b7280;
-    line-height: 1.7;
+    font-size: clamp(1.0625rem, 2.2vw, 1.3125rem);
+    color: #6C7281;
+    line-height: 1.75;
     margin: 0 auto 3rem;
-    max-width: 800px;
+    max-width: 780px;
+    font-weight: 500;
+
+    @media (max-width: 640px) {
+      margin-bottom: 2.5rem;
+      font-size: clamp(1rem, 4vw, 1.0625rem);
+    }
   }
 
+  // SEPARATOR - Thin light line
   &__separator {
-    display: none; // Removed hard line, using gradient transitions instead
+    width: 100%;
+    max-width: 500px;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(108, 114, 129, 0.25) 20%,
+      rgba(108, 114, 129, 0.3) 50%,
+      rgba(108, 114, 129, 0.25) 80%,
+      transparent 100%
+    );
+    margin: 0 auto 4rem;
+
+    @media (max-width: 640px) {
+      margin-bottom: 3rem;
+      max-width: 85%;
+    }
   }
 
-  &__cards {
+  // 3-STEP PROCESS - Horizontal row on desktop, stack on mobile
+  &__steps {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
-    margin-top: 4rem;
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
+    gap: 4rem;
+    margin: 0 auto 4.5rem;
+    max-width: 1040px;
+    align-items: start;
 
     @media (max-width: 968px) {
       grid-template-columns: 1fr;
-      gap: 2.5rem;
+      gap: 3.5rem;
+      max-width: 420px;
+    }
+
+    @media (max-width: 640px) {
+      gap: 3rem;
+      margin-bottom: 3.5rem;
+    }
+  }
+
+  // CTA BUTTON CONTAINER
+  &__cta {
+    margin-top: 3.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: 640px) {
+      margin-top: 2.5rem;
     }
   }
 }
 
-.creator-card {
+// INDIVIDUAL CREATOR STEP CARD
+.creator-step {
   background: transparent;
-  border: none;
-  padding: 2rem 1.5rem;
+  padding: 0;
   text-align: center;
-  transition: all 0.3s ease;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
-    transform: translateY(-4px);
+    transform: translateY(-10px);
 
-    .creator-card__icon {
-      transform: scale(1.1);
-      box-shadow: 0 8px 24px rgba(0, 225, 255, 0.3);
+    .creator-step__icon-badge {
+      transform: scale(1.12);
+      box-shadow: 0 16px 40px rgba(0, 229, 255, 0.4);
     }
   }
 
-  &__icon {
-    font-size: 2rem;
-    margin: 0 auto 1.5rem;
+  // ICON WRAPPER - ensures perfect centering
+  &__icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    @media (max-width: 640px) {
+      margin-bottom: 1.75rem;
+    }
+  }
+
+  // ICON BADGE - Soft cyan gradient with shadow
+  &__icon-badge {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #00E5FF 0%, #22E1F9 50%, #00C8E6 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: #00E1FF;
-    box-shadow: 0 4px 16px rgba(0, 225, 255, 0.2);
-    transition: all 0.3s ease;
+    box-shadow:
+      0 10px 30px rgba(0, 229, 255, 0.3),
+      0 4px 12px rgba(0, 229, 255, 0.2);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+
+    @media (max-width: 640px) {
+      width: 84px;
+      height: 84px;
+    }
+
+    // Subtle outer glow effect
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(0, 229, 255, 0.4), rgba(34, 225, 249, 0.3));
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      filter: blur(8px);
+    }
   }
 
+  &:hover &__icon-badge::before {
+    opacity: 1;
+  }
+
+  &__icon {
+    font-size: 2.5rem;
+    line-height: 1;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+
+    @media (max-width: 640px) {
+      font-size: 2.25rem;
+    }
+  }
+
+  // TITLE - Bold, dark navy
   &__title {
-    font-size: 1.25rem;
+    font-size: clamp(1.1875rem, 2.2vw, 1.4375rem);
     font-weight: 700;
     margin: 0 0 1rem;
-    color: #1a1a2e;
+    color: #1B1F3B;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+
+    @media (max-width: 640px) {
+      margin-bottom: 0.875rem;
+    }
   }
 
+  // TEXT - Gray, readable
   &__text {
-    font-size: 0.95rem;
-    color: #6b7280;
-    line-height: 1.6;
+    font-size: clamp(0.9375rem, 1.6vw, 1.0625rem);
+    color: #6C7281;
+    line-height: 1.7;
     margin: 0;
+    font-weight: 400;
   }
 }
 
-// FLOATING AMBASSADOR IMAGES
+// CTA BUTTON - Pill-shaped with cyan gradient
+.creators-cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.125rem 2.5rem;
+  background: linear-gradient(135deg, #00E5FF 0%, #22E1F9 40%, #00C8E6 100%);
+  color: #ffffff;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;
+  box-shadow:
+    0 10px 30px rgba(0, 229, 255, 0.35),
+    0 4px 12px rgba(0, 229, 255, 0.25);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.01em;
+
+  &:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow:
+      0 14px 40px rgba(0, 229, 255, 0.5),
+      0 6px 16px rgba(0, 229, 255, 0.35);
+
+    .creators-cta-button__icon {
+      transform: translateX(5px);
+    }
+  }
+
+  &:active {
+    transform: translateY(-1px) scale(1);
+  }
+
+  // Shimmer effect
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      transparent 100%
+    );
+    transition: left 0.6s ease;
+  }
+
+  &:hover::before {
+    left: 120%;
+  }
+
+  &__text {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__icon {
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (max-width: 640px) {
+    padding: 1rem 2.25rem;
+    font-size: 1rem;
+    gap: 0.625rem;
+  }
+}
+
+// FLOATING AMBASSADOR AVATARS - Positioned around edges
 .floating-ambassador {
   position: absolute;
-  width: 50px;
-  height: 50px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  border: 3px solid #ffffff;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.18),
+    0 4px 12px rgba(0, 0, 0, 0.12);
+  border: 4px solid #ffffff;
   z-index: 2;
   animation: floatUpDown 4s ease-in-out infinite;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: scale(1.15);
+    box-shadow:
+      0 12px 32px rgba(0, 0, 0, 0.24),
+      0 6px 16px rgba(0, 0, 0, 0.16);
+  }
 
   @media (max-width: 968px) {
-    width: 40px;
-    height: 40px;
-    border-width: 2px;
+    width: 52px;
+    height: 52px;
+    border-width: 3px;
   }
 
   @media (max-width: 640px) {
     display: none;
 
-    // Show only top 2 on mobile
-    &--top-left,
-    &--top-right {
+    // Show only 4 on mobile
+    &--1,
+    &--2,
+    &--3,
+    &--4 {
       display: block;
-      width: 35px;
-      height: 35px;
+      width: 44px;
+      height: 44px;
+      border-width: 3px;
     }
   }
 
-  // Top Left
-  &--top-left {
+  // POSITIONING - 8 avatars randomly distributed around edges
+  &--1 {
     top: 8%;
     left: 5%;
     animation-delay: 0s;
   }
 
-  // Top Right
-  &--top-right {
-    top: 8%;
-    right: 5%;
-    animation-delay: 1s;
+  &--2 {
+    top: 12%;
+    right: 8%;
+    animation-delay: 0.8s;
   }
 
-  // Left (near first card)
-  &--left {
-    top: 45%;
-    left: 8%;
+  &--3 {
+    top: 35%;
+    left: 3%;
+    animation-delay: 1.6s;
+  }
+
+  &--4 {
+    top: 38%;
+    right: 4%;
+    animation-delay: 2.4s;
+  }
+
+  &--5 {
+    bottom: 30%;
+    left: 6%;
+    animation-delay: 1.2s;
+  }
+
+  &--6 {
+    bottom: 28%;
+    right: 5%;
     animation-delay: 2s;
   }
 
-  // Right (near third card)
-  &--right {
-    top: 45%;
-    right: 8%;
-    animation-delay: 1.5s;
+  &--7 {
+    bottom: 10%;
+    left: 10%;
+    animation-delay: 0.4s;
   }
 
-  // Bottom Left
-  &--bottom-left {
-    bottom: 15%;
-    left: 12%;
-    animation-delay: 0.5s;
-  }
-
-  // Bottom Right
-  &--bottom-right {
-    bottom: 15%;
+  &--8 {
+    bottom: 8%;
     right: 12%;
-    animation-delay: 2.5s;
+    animation-delay: 2.8s;
+  }
+
+  // Mobile positioning adjustments
+  @media (max-width: 640px) {
+    &--1 {
+      top: 5%;
+      left: 4%;
+    }
+
+    &--2 {
+      top: 5%;
+      right: 4%;
+    }
+
+    &--3 {
+      top: 50%;
+      left: 2%;
+    }
+
+    &--4 {
+      top: 50%;
+      right: 2%;
+    }
   }
 }
 
@@ -493,11 +857,15 @@ $accent-teal: #00a8cc;
 
 // FOR BRANDS AND AGENCIES SECTION
 .brands-section {
-  padding: 8rem 2rem;
+  padding: 5rem 2rem;
   background: darken($brand-color, 3%);
   position: relative;
   border-top: 1px solid $border-color;
   border-bottom: 1px solid $border-color;
+
+  @media (max-width: 640px) {
+    padding: 3.5rem 1.5rem;
+  }
 
   &__container {
     max-width: 1200px;
@@ -625,12 +993,42 @@ $accent-teal: #00a8cc;
 
 // VIDEOS SECTION
 .videos-section {
-  padding: 8rem 2rem;
+  padding: 4rem 2rem 6rem;
   max-width: 1800px;
   margin: 0 auto;
   background: $brand-color;
   position: relative;
   border-bottom: 1px solid $border-color;
+
+  @media (max-width: 640px) {
+    padding: 3rem 1.5rem 4rem;
+  }
+
+  // Simple title styling
+  .collaborate-strip__container {
+    margin-bottom: 3rem;
+    padding: 0;
+    background: transparent;
+
+    @media (max-width: 640px) {
+      margin-bottom: 2rem;
+    }
+  }
+
+  .collaborate-strip__title {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    margin: 0;
+    color: $text-color;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    line-height: 1.4;
+
+    @media (max-width: 640px) {
+      font-size: clamp(1.4rem, 5vw, 1.75rem);
+      letter-spacing: 0.03em;
+    }
+  }
 }
 
 .videos-container {
@@ -670,10 +1068,14 @@ $accent-teal: #00a8cc;
 
 // FAQ SECTION
 .faq-section {
-  padding: 8rem 2rem;
+  padding: 5rem 2rem;
   background: darken($brand-color, 3%);
   position: relative;
   border-top: 1px solid $border-color;
+
+  @media (max-width: 640px) {
+    padding: 3.5rem 1.5rem;
+  }
 }
 
 .section-title {
@@ -758,10 +1160,14 @@ $accent-teal: #00a8cc;
 
 // FINAL CTA SECTION
 .final-cta-section {
-  padding: 8rem 2rem;
+  padding: 5rem 2rem;
   text-align: center;
   background: $brand-color;
   border-top: 1px solid $border-color;
+
+  @media (max-width: 640px) {
+    padding: 3.5rem 1.5rem;
+  }
 }
 
 .final-cta__title {
