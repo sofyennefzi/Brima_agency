@@ -35,6 +35,37 @@ import { siteConfig, brandLogos, faqsBrands } from '../../config/site';
         </div>
       </section>
 
+      <!-- UGC Impact Section -->
+      <section class="ugc-impact">
+        <div class="ugc-impact__container">
+          <div class="ugc-impact__header">
+            <h2 class="ugc-impact__title">Let UGC Drive Your Brand’s Success</h2>
+            <p class="ugc-impact__subtitle">INCREASE TRUST, SALES, AND ENGAGEMENT</p>
+          </div>
+
+          <div class="ugc-impact__grid">
+            <div class="ugc-stat">
+              <div class="ugc-stat__value">28%</div>
+              <div class="ugc-stat__label">Boost in Social Media Engagement with UGC</div>
+            </div>
+
+            <div class="ugc-stat">
+              <div class="ugc-stat__value">92%</div>
+              <div class="ugc-stat__label">of consumers trust UGC over traditional advertising</div>
+            </div>
+
+            <div class="ugc-stat">
+              <div class="ugc-stat__value">62%</div>
+              <div class="ugc-stat__label">More Likely to Buy When Seeing User-Generated Content</div>
+            </div>
+          </div>
+
+          <div class="ugc-impact__cta">
+            <a [routerLink]="siteConfig.externalUrls.brandSignUp" class="btn btn--primary">Start now</a>
+          </div>
+        </div>
+      </section>
+
       <!-- Platform Section with Scroll Animation -->
       <section class="platform-section" #platformSection>
         <div class="platform-section__container">

@@ -57,7 +57,9 @@ import { siteConfig } from '../../config/site';
       <!-- Brand Story Tagline -->
       <section class="brand-story-strip">
         <div class="brand-story-strip__container">
-          <p class="brand-story-strip__tagline">Every brand has a story, that deserves to be heard.</p>
+          <p class="brand-story-strip__tagline">
+            Every brand has a <span class="brand-story-strip__accent">story</span>, that deserves to <span class="brand-story-strip__accent">be heard</span>.
+          </p>
         </div>
       </section>
       <!-- Brand Logos Bar -->

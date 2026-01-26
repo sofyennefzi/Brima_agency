@@ -208,10 +208,16 @@ $accent-teal: #00a8cc;
   }
 
   &__tagline {
-    font-size: clamp(1.25rem, 3vw, 2rem);
-    font-weight: 700;
+    font-size: clamp(1.3rem, 3vw, 2.15rem);
+    font-weight: 800;
+    letter-spacing: -0.01em;
     color: $text-color;
     margin: 0;
+  }
+
+  &__accent {
+    color: #0ef0e5;
+    font-weight: 900;
   }
 }
 
@@ -1202,17 +1208,20 @@ $accent-teal: #00a8cc;
   }
 
   .collaborate-strip__title {
-    font-size: clamp(1.75rem, 4vw, 2.75rem);
-    font-weight: 800;
-    letter-spacing: 0.05em;
+    font-size: clamp(1.6rem, 3.2vw, 2.35rem);
+    font-weight: 700;
+    letter-spacing: 0.015em;
+    text-transform: none;
+    line-height: 1.25;
     margin: 0;
     color: $text-color;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     line-height: 1.4;
 
     @media (max-width: 640px) {
-      font-size: clamp(1.4rem, 5vw, 1.75rem);
-      letter-spacing: 0.03em;
+      font-size: clamp(1.25rem, 4.3vw, 1.55rem);
+      letter-spacing: 0.01em;
+      line-height: 1.3;
     }
   }
 }
