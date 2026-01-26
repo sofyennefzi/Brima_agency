@@ -13,22 +13,8 @@ import { siteConfig } from '../../config/site';
     <app-navbar></app-navbar>
 
     <main class="home">
-      <!-- Hero Section - Full Screen Video Background -->
+      <!-- Hero Section - Solid Background (No Video) -->
       <section class="hero">
-        <!-- Video Background -->
-        <video
-          class="hero__video-bg"
-          src="assets/videos/main.mp4"
-          autoplay
-          loop
-          muted
-          playsinline
-          preload="auto"
-        ></video>
-
-        <!-- Dark Overlay -->
-        <div class="hero__overlay"></div>
-
         <!-- Bottom Gradient Transition -->
         <div class="hero__gradient-transition"></div>
 

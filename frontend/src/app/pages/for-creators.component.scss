@@ -11,9 +11,18 @@
   background: radial-gradient(circle at 50% 20%, rgba(99, 102, 241, 0.15), transparent 60%),
               radial-gradient(circle at 80% 80%, rgba(217, 70, 239, 0.1), transparent 50%),
               #050509;
-  padding: 6rem 2rem;
+  padding: 4.5rem 2rem;
   position: relative;
   overflow: hidden;
+  margin-top: -20px;
+
+  @media (max-width: 968px) {
+    padding: 4rem 1.75rem;
+  }
+
+  @media (max-width: 640px) {
+    padding: 3.5rem 1.5rem;
+  }
 
   &__container {
     max-width: 900px;
@@ -674,4 +683,3 @@
     opacity: 1;
   }
 }
-

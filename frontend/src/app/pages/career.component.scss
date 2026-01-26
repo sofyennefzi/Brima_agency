@@ -2,6 +2,7 @@
 
 .hero {
   padding: 6rem 2rem;
+  margin-top: -20px;
   background: radial-gradient(circle at 50% 20%, rgba(99, 102, 241, 0.15), transparent 60%), #050509;
 
   &__container {
@@ -150,106 +151,3 @@
     }
   }
 }
-.cases { padding-top: 80px; }
-
-.hero {
-  padding: 6rem 2rem 4rem;
-  background: radial-gradient(circle at 50% 20%, rgba(99, 102, 241, 0.15), transparent 60%), #050509;
-
-  &__container { max-width: 900px; margin: 0 auto; text-align: center; }
-
-  &__headline {
-    font-size: clamp(3rem, 8vw, 5rem);
-    font-weight: 700;
-    color: #fff;
-    margin: 0 0 1.5rem;
-  }
-
-  &__subtitle {
-    font-size: 1.25rem;
-    color: rgba(255, 255, 255, 0.7);
-    margin: 0;
-  }
-}
-
-.cases-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 2.5rem;
-}
-
-.case-card {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 24px;
-  overflow: hidden;
-  transition: all 0.3s ease;
-
-  &:hover {
-    transform: translateY(-8px);
-    border-color: rgba(99, 102, 241, 0.3);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  }
-
-  &__image {
-    aspect-ratio: 16 / 9;
-    background: linear-gradient(135deg, #1a1a1f, #2a2a2f);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  &__placeholder {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: rgba(255, 255, 255, 0.3);
-  }
-
-  &__content { padding: 2rem; }
-
-  &__title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #fff;
-    margin: 0 0 0.5rem;
-  }
-
-  &__brand {
-    font-size: 0.95rem;
-    color: #6366f1;
-    margin: 0 0 1rem;
-  }
-
-  &__description {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.7);
-    margin: 0 0 1.5rem;
-  }
-
-  &__results {
-    font-size: 0.95rem;
-    color: rgba(255, 255, 255, 0.6);
-
-    strong { color: #fff; }
-  }
-}
-
-.swipe-hint {
-  text-align: center;
-  color: rgba(255, 255, 255, 0.4);
-  font-size: 0.95rem;
-  margin-top: 3rem;
-
-  @media (min-width: 768px) {
-    display: none;
-  }
-}
-
-@media (max-width: 640px) {
-  .cases-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-}
-
