@@ -4,11 +4,12 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 import { BrandInterviewCalendarComponent } from './brand.interview-calendar.component';
+import { NavbarComponent } from '../../shared/navbar.component';
 
 @Component({
   selector: 'app-brand-sign-up',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink, BrandInterviewCalendarComponent],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, BrandInterviewCalendarComponent, NavbarComponent],
   templateUrl: './brand-sign-up.component.html',
   styleUrls: ['./auth.shared.scss'],
 })
@@ -22,6 +23,7 @@ export class BrandSignUpComponent {
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
       company_name: ['', Validators.required],
+      portfolio_link: [''],
       phone: [''],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],

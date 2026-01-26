@@ -66,6 +66,91 @@ import { siteConfig, brandLogos, faqsBrands } from '../../config/site';
         </div>
       </section>
 
+      <!-- All-in-one UGC Solution -->
+      <section class="ugc-solution">
+        <div class="ugc-solution__container">
+          <div class="ugc-solution__content">
+            <p class="ugc-solution__eyebrow">YOUR ALL-IN-ONE SOLUTION FOR UGC CAMPAIGNS</p>
+            <h2 class="ugc-solution__title">Everything you need to launch, manage, and scale creator campaigns</h2>
+
+            <div class="ugc-solution__features">
+              <div class="ugc-feature">
+                <div class="ugc-feature__icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                  </svg>
+                </div>
+                <div class="ugc-feature__body">
+                  <h3 class="ugc-feature__title">Authentic Engagement</h3>
+                  <p class="ugc-feature__text">Work with creators to develop content that connects with your audience.</p>
+                </div>
+              </div>
+
+              <div class="ugc-feature">
+                <div class="ugc-feature__icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                  </svg>
+                </div>
+                <div class="ugc-feature__body">
+                  <h3 class="ugc-feature__title">Easy Campaign Management</h3>
+                  <p class="ugc-feature__text">Simplify your campaign management from brief creation to final approval.</p>
+                </div>
+              </div>
+
+              <div class="ugc-feature">
+                <div class="ugc-feature__icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                  </svg>
+                </div>
+                <div class="ugc-feature__body">
+                  <h3 class="ugc-feature__title">Secure Payments</h3>
+                  <p class="ugc-feature__text">Easily recharge your balance and make secure payments to creators.</p>
+                </div>
+              </div>
+
+              <div class="ugc-feature">
+                <div class="ugc-feature__icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="20" x2="18" y2="10"/>
+                    <line x1="12" y1="20" x2="12" y2="4"/>
+                    <line x1="6" y1="20" x2="6" y2="14"/>
+                  </svg>
+                </div>
+                <div class="ugc-feature__body">
+                  <h3 class="ugc-feature__title">Measurable Results</h3>
+                  <p class="ugc-feature__text">Track performance and optimize your content pipeline with clear reporting.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="ugc-solution__cta">
+              <a [routerLink]="siteConfig.externalUrls.brandSignUp" class="btn btn--primary">Start now</a>
+              <a href="#studios" class="btn btn--secondary">See services</a>
+            </div>
+          </div>
+
+          <div class="ugc-solution__media">
+            <div class="ugc-solution__video-card">
+              <video
+                class="ugc-solution__video"
+                src="assets/videos/Jannah.mp4"
+                autoplay
+                loop
+                muted
+                playsinline
+              ></video>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Platform Section with Scroll Animation -->
       <section class="platform-section" #platformSection>
         <div class="platform-section__container">
@@ -84,34 +169,18 @@ import { siteConfig, brandLogos, faqsBrands } from '../../config/site';
         </div>
       </section>
 
-      <!-- Studios Section -->
-      <app-section [dark]="true" id="studios">
-        <h2 class="section-title">Tailored Video Solutions</h2>
-        <div class="studios">
-          <div class="studio-card">
-            <h3>Product Studios</h3>
-            <p>Professional product videos, unboxings, and reviews optimized for e-commerce and social media.</p>
-          </div>
-          <div class="studio-card">
-            <h3>Brand Storytelling</h3>
-            <p>Authentic creator content that builds trust and connection with your target audience.</p>
-          </div>
-          <div class="studio-card">
-            <h3>Performance Marketing</h3>
-            <p>Data-driven video ads created and tested by creators who understand what converts.</p>
+      <!-- Brand Logos Section -->
+      <section class="brand-logos-section">
+        <div class="brand-logos-section__container">
+          <h2 class="brand-logos-section__title">Trusted by Leading Brands</h2>
+          <div class="brand-logos-bar">
+            <div class="brand-logos-bar__scroll">
+              <img *ngFor="let brand of displayBrandLogos" [src]="brand.src" [alt]="brand.alt" class="brand-logos-bar__logo" loading="lazy" />
+              <img *ngFor="let brand of displayBrandLogos" [src]="brand.src" [alt]="brand.alt" class="brand-logos-bar__logo" loading="lazy" />
+            </div>
           </div>
         </div>
-      </app-section>
-
-      <!-- Brand Logos -->
-      <app-section>
-        <h2 class="section-title">Trusted by Leading Brands</h2>
-        <div class="brand-logos">
-          <div class="brand-logo" *ngFor="let brand of brandLogos">
-            <div class="brand-logo__placeholder">{{ brand.name }}</div>
-          </div>
-        </div>
-      </app-section>
+      </section>
 
 
       <!-- FAQ -->
@@ -159,6 +228,15 @@ export class ForBrandsComponent implements AfterViewInit, OnDestroy {
 
   quoteText = "This platform is a must if you need creator made videos enhanced with ultimate AI-Tools.";
   quoteWords: string[] = [];
+
+  displayBrandLogos = [
+    { src: 'assets/brand/5.png', alt: 'Brand 5' },
+    { src: 'assets/brand/6.png', alt: 'Brand 6' },
+    { src: 'assets/brand/8.png', alt: 'Brand 8' },
+    { src: 'assets/brand/9.png', alt: 'Brand 9' },
+    { src: 'assets/brand/12.png', alt: 'Brand 12' },
+    { src: 'assets/brand/13.png', alt: 'Brand 13' },
+  ];
 
 
   constructor() {
@@ -232,4 +310,3 @@ export class ForBrandsComponent implements AfterViewInit, OnDestroy {
     this.faqs[index].open = !this.faqs[index].open;
   }
 }
-
