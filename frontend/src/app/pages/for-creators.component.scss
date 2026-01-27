@@ -289,44 +289,47 @@
   letter-spacing: -0.02em;
 }
 
-// Video Hero Section
+// Video Hero Section - Improved Ergonomics
 .video-hero {
-  min-height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  min-height: auto;
   padding: 6rem 2rem;
   background: #ffffff;
   position: relative;
   overflow: hidden;
 
-
   &__container {
-    max-width: 1600px;
+    max-width: 1400px;
     margin: 0 auto;
     width: 100%;
     position: relative;
     z-index: 1;
   }
 
+  &__header {
+    text-align: center;
+    margin-bottom: 4rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media (max-width: 768px) {
+      margin-bottom: 3rem;
+    }
+  }
+
   &__headline {
-    font-size: clamp(3rem, 8vw, 7rem);
+    font-size: clamp(2.5rem, 6vw, 5rem);
     font-weight: 800;
     line-height: 1.1;
-    letter-spacing: -0.04em;
-    margin: 0 0 4rem;
+    letter-spacing: -0.03em;
+    margin: 0 0 1.5rem;
     text-align: center;
     color: #0c082d;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
 
-    @media (max-width: 968px) {
-      font-size: clamp(2.5rem, 10vw, 4rem);
-      margin-bottom: 3rem;
-    }
-
-    @media (max-width: 640px) {
-      font-size: clamp(2rem, 12vw, 3rem);
-      margin-bottom: 2.5rem;
+    @media (max-width: 768px) {
+      font-size: clamp(2rem, 8vw, 3.5rem);
+      margin-bottom: 1.25rem;
     }
   }
 
@@ -339,41 +342,52 @@
     font-weight: 900;
   }
 
-  &__videos {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
+  &__subtitle {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: rgba(12, 8, 45, 0.7);
+    margin: 0;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
     max-width: 100%;
-    overflow-x: auto;
-    padding: 0 1rem;
-    scroll-behavior: smooth;
+    justify-items: center;
 
-    // Hide scrollbar but keep functionality
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    &::-webkit-scrollbar {
-      display: none;
+    @media (min-width: 1200px) {
+      grid-template-columns: repeat(5, 1fr);
+      gap: 2rem;
     }
 
-    @media (max-width: 968px) {
-      justify-content: flex-start;
-      gap: 1rem;
-      padding: 0 0.5rem;
+    @media (min-width: 768px) and (max-width: 1199px) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
     }
 
-    @media (max-width: 640px) {
-      gap: 0.75rem;
+    @media (max-width: 767px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
     }
   }
 
   &__card {
-    flex-shrink: 0;
-    width: 240px;
+    width: 100%;
+    max-width: 280px;
     aspect-ratio: 9 / 16;
-    border-radius: 20px;
+    border-radius: 24px;
     overflow: hidden;
     background: #f5f5f5;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
 
@@ -381,9 +395,9 @@
       content: '';
       position: absolute;
       inset: 0;
-      border-radius: 20px;
-      padding: 1px;
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(139, 92, 246, 0.3), rgba(236, 72, 153, 0.3));
+      border-radius: 24px;
+      padding: 2px;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.4), rgba(139, 92, 246, 0.4), rgba(236, 72, 153, 0.4));
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
@@ -392,8 +406,8 @@
     }
 
     &:hover {
-      transform: translateY(-12px) scale(1.02);
-      box-shadow: 0 20px 60px rgba(139, 92, 246, 0.4);
+      transform: translateY(-8px);
+      box-shadow: 0 16px 48px rgba(139, 92, 246, 0.3);
 
       &::after {
         opacity: 1;
@@ -404,13 +418,9 @@
       }
     }
 
-    @media (max-width: 968px) {
-      width: 200px;
-    }
-
-    @media (max-width: 640px) {
-      width: 180px;
-      border-radius: 16px;
+    @media (max-width: 767px) {
+      max-width: 100%;
+      border-radius: 20px;
     }
   }
 
@@ -420,6 +430,11 @@
     object-fit: cover;
     display: block;
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  // Remove old horizontal scroll styles
+  &__videos {
+    display: none;
   }
 }
 

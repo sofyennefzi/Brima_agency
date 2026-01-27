@@ -57,10 +57,15 @@ import { siteConfig, faqsCreators } from '../../config/site';
       <!-- Why Creators Love Us -->
       <section class="video-hero">
         <div class="video-hero__container">
-          <h1 class="video-hero__headline">
-            Create <span class="video-hero__gradient">videos</span> for brands.
-          </h1>
-          <div class="video-hero__videos">
+          <div class="video-hero__header">
+            <h1 class="video-hero__headline">
+              Create <span class="video-hero__gradient">videos</span> for brands.
+            </h1>
+            <p class="video-hero__subtitle">
+              Join our network of talented creators producing high-quality video content for top brands worldwide.
+            </p>
+          </div>
+          <div class="video-hero__grid">
             <div class="video-hero__card" *ngFor="let video of heroVideos">
               <video
                 class="video-hero__video"
@@ -153,11 +158,11 @@ export class ForCreatorsComponent implements AfterViewInit, OnDestroy {
   quoteWords: string[] = [];
 
   heroVideos = [
+    'assets/videos/video1.mp4',
+    'assets/videos/video2.mp4',
+    'assets/videos/video3.mp4',
     'assets/videos/video4.mp4',
-    'assets/videos/video5.mp4',
-    'assets/videos/video6.mp4',
-    'assets/videos/Jannah.mp4',
-    'assets/videos/sidi-bou.mov'
+    'assets/videos/Jannah.mp4'
   ];
 
 
