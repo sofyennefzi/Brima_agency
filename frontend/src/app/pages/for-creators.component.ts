@@ -76,20 +76,6 @@ import { siteConfig, faqsCreators } from '../../config/site';
         </div>
       </section>
 
-      <!-- Platform Stats with Scroll Animation -->
-      <section class="stats-showcase" #statsSection>
-        <div class="stats-showcase__container">
-          <h2 class="stats-showcase__title">Creator Platform Stats</h2>
-          <div class="stats-showcase__grid">
-            <div class="stat-card animate-on-scroll" *ngFor="let stat of stats; let i = index" [style.animation-delay]="(i * 0.15) + 's'">
-              <div class="stat-card__value">{{ stat.value }}</div>
-              <div class="stat-card__label">{{ stat.label }}</div>
-              <div class="stat-card__description">{{ stat.description }}</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
 
       <!-- How It Works -->
       <app-section [dark]="true">
@@ -128,7 +114,7 @@ import { siteConfig, faqsCreators } from '../../config/site';
       <app-section [dark]="true">
         <div class="final-cta">
           <h2 class="final-cta__title">Ready to start earning?</h2>
-          <p class="final-cta__subtitle">Join {{ stats[1].value }} creators already making money on our platform</p>
+          <p class="final-cta__subtitle">Join our community of creators already making money on our platform</p>
           <div class="final-cta__support">
             <p>Need help? Contact our creator support team</p>
             <div class="final-cta__links">
@@ -151,7 +137,6 @@ import { siteConfig, faqsCreators } from '../../config/site';
 })
 export class ForCreatorsComponent implements AfterViewInit, OnDestroy {
   @ViewChild('quoteSection') quoteSection!: ElementRef;
-  @ViewChild('statsSection') statsSection!: ElementRef;
 
   siteConfig = siteConfig;
   faqs = faqsCreators.map(faq => ({ ...faq, open: false }));
@@ -168,28 +153,6 @@ export class ForCreatorsComponent implements AfterViewInit, OnDestroy {
     'assets/videos/sidi-bou.mov'
   ];
 
-  stats = [
-    {
-      value: '$2.5M+',
-      label: 'Paid to Creators',
-      description: 'Total earnings distributed'
-    },
-    {
-      value: '1,488',
-      label: 'Active Creators',
-      description: 'Growing community'
-    },
-    {
-      value: '4.9/5',
-      label: 'Average Rating',
-      description: 'Creator satisfaction'
-    },
-    {
-      value: '200+',
-      label: 'Brand Partners',
-      description: 'Diverse opportunities'
-    }
-  ];
 
   steps = [
     {
