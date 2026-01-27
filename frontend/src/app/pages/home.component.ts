@@ -301,14 +301,11 @@ export class HomeComponent implements AfterViewInit {
   ];
 
   videos = [
-    { src: 'assets/videos/video1.mp4', title: 'Video 1' },
-    { src: 'assets/videos/video2.mp4', title: 'Video 2' },
-    { src: 'assets/videos/video3.mp4', title: 'Video 3' },
     { src: 'assets/videos/Jannah.mp4', title: 'Jannah' },
+    { src: 'assets/videos/sidi-bou.mov', title: 'Sidi Bou' },
+    { src: 'assets/videos/Offtopic.mov', title: 'Offtopic' },
     { src: 'assets/videos/video4.mp4', title: 'Video 4' },
     { src: 'assets/videos/video8.mp4', title: 'Video 8' },
-    { src: 'assets/videos/video9.mp4', title: 'Video 9' },
-    { src: 'assets/videos/sidi-bou.mov', title: 'Sidi Bou' },
   ];
 
   leftFaqs = [
