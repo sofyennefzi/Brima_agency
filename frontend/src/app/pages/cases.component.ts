@@ -4,7 +4,7 @@ import { RouterLink } from '@angular/router';
 import { NavbarComponent } from '../shared/navbar.component';
 import { FooterComponent } from '../shared/footer.component';
 import { SectionComponent } from '../shared/section.component';
-import { caseStudies, siteConfig } from '../../config/site';
+import { siteConfig } from '../../config/site';
 
 @Component({
   selector: 'app-cases',
@@ -22,52 +22,62 @@ import { caseStudies, siteConfig } from '../../config/site';
             See how brands partnered with our creator network to produce authentic,
             high-performing video content that drives real business results.
           </p>
-          <div class="hero__stats">
-            <div class="hero__stat">
-              <div class="hero__stat-value">25M+</div>
-              <div class="hero__stat-label">Total Views</div>
-            </div>
-            <div class="hero__stat">
-              <div class="hero__stat-value">200+</div>
-              <div class="hero__stat-label">Brands</div>
-            </div>
-            <div class="hero__stat">
-              <div class="hero__stat-value">1,488</div>
-              <div class="hero__stat-label">Creators</div>
-            </div>
-          </div>
         </div>
       </section>
 
-      <!-- Video Cases Grid -->
+      <!-- Testimonial Quote Section -->
+      <section class="testimonial-section">
+        <div class="testimonial-container">
+          <blockquote class="testimonial-quote">
+            This platform is a must if you need creator made videos to scale your videos.
+          </blockquote>
+        </div>
+      </section>
+
+      <!-- Video Showcase Grid -->
       <app-section>
-        <div class="video-cases">
-          <div class="video-case" *ngFor="let caseStudy of caseStudies; let i = index" [class.video-case--featured]="i === 0">
-            <div class="video-case__container">
-              <video
-                #videoElement
-                class="video-case__video"
-                [src]="caseStudy.video"
-                autoplay
-                loop
-                muted
-                playsinline
-                preload="auto"
-              ></video>
-              <div class="video-case__overlay">
-                <div class="video-case__content">
-                  <span class="video-case__category">{{ caseStudy.category }}</span>
-                  <h3 class="video-case__title">{{ caseStudy.title }}</h3>
-                  <p class="video-case__brand">{{ caseStudy.brand }}</p>
-                  <p class="video-case__description">{{ caseStudy.description }}</p>
-                  <div class="video-case__metrics">
-                    <div class="video-case__metric">
-                      <span class="video-case__metric-icon">👁️</span>
-                      <span class="video-case__metric-value">{{ caseStudy.results }}</span>
+        <div class="video-showcase">
+          <h2 class="showcase-title">Creator Video Showcase</h2>
+          <p class="showcase-subtitle">Professional content created by our talented creator network</p>
+
+          <div class="video-scroll-container">
+            <div class="video-scroll-track">
+              <!-- First set of videos -->
+              <div class="video-item" *ngFor="let video of allVideos">
+                <div class="video-wrapper">
+                  <video
+                    #videoElement
+                    class="video-player"
+                    [src]="video.src"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    preload="auto"
+                  ></video>
+                  <div class="video-overlay">
+                    <div class="video-info">
+                      <span class="video-title">{{ video.title }}</span>
                     </div>
-                    <div class="video-case__metric">
-                      <span class="video-case__metric-icon">📈</span>
-                      <span class="video-case__metric-value">{{ caseStudy.metric }}</span>
+                  </div>
+                </div>
+              </div>
+              <!-- Duplicate set for seamless loop -->
+              <div class="video-item" *ngFor="let video of allVideos">
+                <div class="video-wrapper">
+                  <video
+                    #videoElement
+                    class="video-player"
+                    [src]="video.src"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    preload="auto"
+                  ></video>
+                  <div class="video-overlay">
+                    <div class="video-info">
+                      <span class="video-title">{{ video.title }}</span>
                     </div>
                   </div>
                 </div>
@@ -159,8 +169,21 @@ import { caseStudies, siteConfig } from '../../config/site';
 export class CasesComponent implements AfterViewInit {
   @ViewChildren('videoElement') videoElements!: QueryList<ElementRef<HTMLVideoElement>>;
 
-  caseStudies = caseStudies;
   siteConfig = siteConfig;
+
+  // All available videos to showcase
+  allVideos = [
+    { src: 'assets/videos/video1.mp4', title: 'Creator Video 1' },
+    { src: 'assets/videos/video2.mp4', title: 'Creator Video 2' },
+    { src: 'assets/videos/video3.mp4', title: 'Creator Video 3' },
+    { src: 'assets/videos/video4.mp4', title: 'Creator Video 4' },
+    { src: 'assets/videos/video8.mp4', title: 'Creator Video 8' },
+    { src: 'assets/videos/video9.mp4', title: 'Creator Video 9' },
+    { src: 'assets/videos/Jannah.mp4', title: 'Jannah' },
+    { src: 'assets/videos/main.mp4', title: 'Main Campaign' },
+    { src: 'assets/videos/sidi-bou.mov', title: 'Sidi Bou' },
+    { src: 'assets/videos/Offtopic.mov', title: 'Offtopic' },
+  ];
 
   ngAfterViewInit(): void {
     // Synchronize all videos to start at the same time and ensure they're muted

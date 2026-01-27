@@ -103,7 +103,249 @@
 }
 
 // ============================================
-// VIDEO CASES GRID
+// TESTIMONIAL SECTION
+// ============================================
+.testimonial-section {
+  padding: 5rem 2rem;
+  background: linear-gradient(
+    180deg,
+    #050509 0%,
+    rgba(12, 8, 45, 0.4) 50%,
+    #050509 100%
+  );
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 800px;
+    height: 100%;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(14, 240, 229, 0.08) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+}
+
+.testimonial-container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-quote-icon {
+  font-size: 6rem;
+  line-height: 1;
+  color: rgba(14, 240, 229, 0.2);
+  font-family: Georgia, serif;
+  margin-bottom: -1rem;
+}
+
+.testimonial-quote {
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 600;
+  line-height: 1.4;
+  color: #ffffff;
+  margin: 0 0 2rem;
+  font-style: italic;
+  letter-spacing: -0.02em;
+
+  @media (max-width: 768px) {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+}
+
+.testimonial-stars {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+
+  .star {
+    animation: twinkle 2s ease-in-out infinite;
+
+    &:nth-child(2) { animation-delay: 0.2s; }
+    &:nth-child(3) { animation-delay: 0.4s; }
+    &:nth-child(4) { animation-delay: 0.6s; }
+    &:nth-child(5) { animation-delay: 0.8s; }
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(0.9); }
+}
+
+// ============================================
+// VIDEO SHOWCASE GRID WITH HORIZONTAL SCROLL
+// ============================================
+.video-showcase {
+  padding: 3rem 0;
+}
+
+.showcase-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  text-align: center;
+  color: #ffffff;
+  margin: 0 0 1rem;
+  letter-spacing: -0.02em;
+}
+
+.showcase-subtitle {
+  font-size: 1.125rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 0 4rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.video-scroll-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 2rem 0;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 150px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  &::before {
+    left: 0;
+    background: linear-gradient(to right, #050509, transparent);
+  }
+
+  &::after {
+    right: 0;
+    background: linear-gradient(to left, #050509, transparent);
+  }
+}
+
+.video-scroll-track {
+  display: flex;
+  gap: 2rem;
+  animation: scroll-left 15s linear infinite;
+  will-change: transform;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.video-item {
+  flex: 0 0 auto;
+  width: 280px;
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #1a1a2e;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+
+  @media (max-width: 768px) {
+    width: 220px;
+  }
+
+  @media (max-width: 480px) {
+    width: 180px;
+  }
+
+  &:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(14, 240, 229, 0.3);
+    z-index: 10;
+
+    .video-player {
+      transform: scale(1.05);
+    }
+
+    .video-overlay {
+      opacity: 1;
+    }
+  }
+}
+
+.video-wrapper {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  background: #000;
+}
+
+.video-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.video-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.7) 50%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.video-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.video-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+
+  @media (max-width: 768px) {
+    font-size: 0.875rem;
+  }
+}
+
+// Remove old grid styles
+.video-grid {
+  display: none;
+}
+
+// ============================================
+// OLD VIDEO CASES GRID (Keep for fallback)
 // ============================================
 .video-cases {
   display: grid;

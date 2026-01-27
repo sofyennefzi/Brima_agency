@@ -40,16 +40,19 @@ import { siteConfig } from '../../config/site';
           <h2 class="collaborate-strip__title">Create, Collaborate And Help Brands Telling Their Stories!</h2>
         </div>
         <div class="videos-container">
-          <div class="video-card" *ngFor="let v of videos">
+          <div class="video-card" *ngFor="let v of videos; let i = index">
             <video
               #videoElement
               class="video-card__video"
               [src]="v.src"
+              [title]="v.title"
               muted
               autoplay
               loop
               playsinline
               preload="auto"
+              (error)="onVideoError($event, i)"
+              (loadeddata)="onVideoLoaded($event, i)"
             ></video>
           </div>
         </div>
@@ -298,11 +301,14 @@ export class HomeComponent implements AfterViewInit {
   ];
 
   videos = [
+    { src: 'assets/videos/video1.mp4', title: 'Video 1' },
+    { src: 'assets/videos/video2.mp4', title: 'Video 2' },
+    { src: 'assets/videos/video3.mp4', title: 'Video 3' },
     { src: 'assets/videos/Jannah.mp4', title: 'Jannah' },
-    { src: 'assets/videos/sidi-bou.mov', title: 'Sidi Bou' },
-    { src: 'assets/videos/Offtopic.mov', title: 'Offtopic' },
     { src: 'assets/videos/video4.mp4', title: 'Video 4' },
-    { src: 'assets/videos/video5.mp4', title: 'Video 5' },
+    { src: 'assets/videos/video8.mp4', title: 'Video 8' },
+    { src: 'assets/videos/video9.mp4', title: 'Video 9' },
+    { src: 'assets/videos/sidi-bou.mov', title: 'Sidi Bou' },
   ];
 
   leftFaqs = [
@@ -320,18 +326,44 @@ export class HomeComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     // Force all videos to play after view is initialized
     setTimeout(() => {
-      this.videoElements.forEach((videoRef) => {
+      this.videoElements.forEach((videoRef, index) => {
         const video = videoRef.nativeElement;
-        video.muted = true; // Ensure muted
-        video.play().catch((error) => {
-          console.log('Video autoplay failed:', error);
-          // Retry playing on user interaction
-          document.addEventListener('click', () => {
-            video.play().catch(() => {});
-          }, { once: true });
-        });
+
+        // Ensure video attributes are set
+        video.muted = true;
+        video.playsInline = true;
+        video.loop = true;
+        video.autoplay = true;
+
+        // Load the video
+        video.load();
+
+        // Try to play
+        const playPromise = video.play();
+
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              console.log(`Video ${index + 1} playing successfully`);
+            })
+            .catch((error) => {
+              console.warn(`Video ${index + 1} autoplay failed:`, error);
+
+              // Retry playing on user interaction
+              const retryPlay = () => {
+                video.play().then(() => {
+                  console.log(`Video ${index + 1} started after user interaction`);
+                }).catch(() => {
+                  console.error(`Video ${index + 1} still failed to play`);
+                });
+              };
+
+              document.addEventListener('click', retryPlay, { once: true });
+              document.addEventListener('touchstart', retryPlay, { once: true });
+            });
+        }
       });
-    }, 100);
+    }, 300);
   }
 
   toggleLeftFaq(index: number): void {
@@ -340,6 +372,37 @@ export class HomeComponent implements AfterViewInit {
 
   toggleRightFaq(index: number): void {
     this.rightFaqs[index].open = !this.rightFaqs[index].open;
+  }
+
+  onVideoError(event: Event, index: number): void {
+    const video = event.target as HTMLVideoElement;
+    const videoInfo = this.videos[index];
+    console.error(`❌ Video ${index + 1} failed to load:`, videoInfo.src);
+    console.error('Error details:', video.error);
+
+    // Log the specific error type
+    if (video.error) {
+      switch (video.error.code) {
+        case 1:
+          console.error('MEDIA_ERR_ABORTED: Video loading was aborted');
+          break;
+        case 2:
+          console.error('MEDIA_ERR_NETWORK: Network error while loading video');
+          break;
+        case 3:
+          console.error('MEDIA_ERR_DECODE: Video format not supported or corrupted');
+          break;
+        case 4:
+          console.error('MEDIA_ERR_SRC_NOT_SUPPORTED: Video format/codec not supported by browser');
+          console.error('⚠️ This usually means the video format is incompatible (e.g., AVI files)');
+          break;
+      }
+    }
+  }
+
+  onVideoLoaded(event: Event, index: number): void {
+    const videoInfo = this.videos[index];
+    console.log(`✅ Video ${index + 1} loaded successfully:`, videoInfo.title);
   }
 
   toggleBrandsVideo(): void {

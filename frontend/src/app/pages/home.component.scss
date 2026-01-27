@@ -1188,9 +1188,12 @@ $accent-teal: #00a8cc;
   background: $brand-color;
   position: relative;
   border-bottom: 1px solid $border-color;
+  z-index: 1;
+  min-height: 600px;
 
   @media (max-width: 640px) {
     padding: 3rem 1.5rem 4rem;
+    min-height: 400px;
   }
 
   // Simple title styling
@@ -1228,12 +1231,31 @@ $accent-teal: #00a8cc;
 
 .videos-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 2rem;
+  max-width: 1600px;
+  margin: 0 auto;
+  justify-items: center;
 
-  @media (min-width: 1024px) {
-    grid-template-columns: repeat(5, 1fr);
-    gap: 2.5rem;
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) and (max-width: 1199px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+  }
+
+  @media (max-width: 767px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
 }
 
@@ -1241,16 +1263,18 @@ $accent-teal: #00a8cc;
   aspect-ratio: 9 / 16;
   border-radius: 24px;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid $border-color;
+  background: #1a1a2e;
+  border: 2px solid rgba(0, 217, 255, 0.2);
   cursor: pointer;
   transition: all 0.4s ease;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  position: relative;
+  min-height: 400px;
 
   &:hover {
     transform: translateY(-12px);
-    border-color: rgba(0, 217, 255, 0.4);
-    box-shadow: 0 20px 60px rgba(0, 217, 255, 0.3);
+    border-color: rgba(0, 217, 255, 0.6);
+    box-shadow: 0 20px 60px rgba(0, 217, 255, 0.4);
   }
 
   &__video {
@@ -1258,6 +1282,9 @@ $accent-teal: #00a8cc;
     height: 100%;
     object-fit: cover;
     display: block;
+    background: #000;
+    position: relative;
+    z-index: 1;
   }
 }
 
