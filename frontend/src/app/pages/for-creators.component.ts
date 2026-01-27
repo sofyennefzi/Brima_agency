@@ -82,9 +82,16 @@ import { siteConfig, faqsCreators } from '../../config/site';
         <h2 class="section-title">How it works</h2>
         <div class="steps">
           <div class="step animate-on-scroll" *ngFor="let step of steps; let i = index" [style.animation-delay]="(i * 0.15) + 's'">
-            <div class="step__number">{{ i + 1 }}</div>
-            <h3 class="step__title">{{ step.title }}</h3>
-            <p class="step__description">{{ step.description }}</p>
+            <div class="step__empty"></div>
+            <div class="step__number-wrapper">
+              <div class="step__number">{{ i + 1 }}</div>
+            </div>
+            <div class="step__content">
+              <div class="step__content-card">
+                <h3 class="step__title">{{ step.title }}</h3>
+                <p class="step__description">{{ step.description }}</p>
+              </div>
+            </div>
           </div>
         </div>
       </app-section>
